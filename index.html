@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurugram Live | City Directory — Restaurants, Malls, Hospitals & More</title>
+  <meta name="description" content="Your complete Gurugram city guide — restaurants, hospitals, schools, malls, cyber city, events, metro routes and everything live in Gurugram." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #06b6d4;
+      --accent2: #8b5cf6;
+      --accent3: #f59e0b;
+      --surface: #ffffff;
+      --surface2: #f8fafc;
+      --surface3: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text2: #475569;
+      --text3: #94a3b8;
+      --hero-from: #0f2027;
+      --hero-to: #203a43;
+      --hero-mid: #2c5364;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+      --card-hover: 0 8px 32px rgba(0,0,0,0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-top {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; max-width: 1200px; margin: 0 auto;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .nav-brand-text { line-height: 1.1; }
+    .nav-brand-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; color: var(--primary); }
+    .nav-brand-sub { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-near-me {
+      display: flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white; border: none; border-radius: 50px;
+      padding: 9px 18px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s; text-decoration: none;
+    }
+    .nav-near-me:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(6,182,212,0.35); }
+    .nav-links {
+      border-top: 1px solid var(--border);
+      overflow-x: auto; padding: 8px 0;
+      display: flex; gap: 4px; max-width: 1200px; margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-link {
+      display: flex; align-items: center; gap: 5px; white-space: nowrap;
+      padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: 500;
+      color: var(--text2); text-decoration: none; transition: all 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--surface3); color: var(--primary);
+    }
+    .nav-link.active { background: linear-gradient(135deg,#e0f7fa,#ede9fe); color: var(--accent2); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--hero-from), var(--hero-mid), var(--hero-to));
+      padding: 70px 20px 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(6,182,212,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 20%, rgba(139,92,246,0.12) 0%, transparent 50%);
+    }
+    .hero-state {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 16px;
+      position: relative;
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(40px, 7vw, 72px);
+      color: white; margin-bottom: 16px; position: relative;
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .hero-subtitle {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: rgba(255,255,255,0.65); max-width: 600px;
+      margin: 0 auto 36px; position: relative; line-height: 1.7;
+    }
+    .hero-search-wrap { position: relative; max-width: 600px; margin: 0 auto 40px; }
+    .hero-search {
+      width: 100%; padding: 16px 24px 16px 50px;
+      border-radius: 50px; border: none;
+      font-size: 15px; font-family: 'DM Sans', sans-serif;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      outline: none; color: var(--text);
+    }
+    .hero-search::placeholder { color: var(--text3); }
+    .hero-search-icon {
+      position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+      color: var(--text3); font-size: 16px;
+    }
+    .hero-chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; position: relative; max-width: 860px; margin: 0 auto;
+    }
+    .hero-chip {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.85);
+      padding: 7px 14px; border-radius: 50px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .hero-chip:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-1px);
+    }
+
+    /* ── SECTIONS ── */
+    .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+    .section-alt { background: var(--surface2); }
+    .section-alt .section { background: transparent; }
+    .section-header { margin-bottom: 32px; }
+    .section-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+    .section-title {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: clamp(22px, 3.5vw, 30px); color: var(--primary); margin-bottom: 6px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-subtitle { color: var(--text2); font-size: 15px; }
+    .section-underline {
+      width: 48px; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      margin-top: 12px;
+    }
+
+    /* ── WEATHER ── */
+    .weather-grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+    @media (max-width: 768px) { .weather-grid { grid-template-columns: 1fr; } }
+    .weather-main {
+      background: linear-gradient(135deg, #0f2027, #2c5364);
+      border-radius: var(--radius); padding: 30px;
+      color: white; position: relative; overflow: hidden;
+    }
+    .weather-main::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(6,182,212,0.2), transparent 60%);
+    }
+    .weather-city { font-size: 13px; font-weight: 500; opacity: 0.6; margin-bottom: 4px; }
+    .weather-temp-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 4px; }
+    .weather-temp { font-family: 'Syne', sans-serif; font-size: 72px; font-weight: 700; line-height: 1; }
+    .weather-unit { font-size: 28px; opacity: 0.5; margin-top: 12px; }
+    .weather-emoji { font-size: 60px; margin-left: auto; }
+    .weather-desc { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+    .weather-feels { font-size: 13px; opacity: 0.6; margin-bottom: 20px; }
+    .weather-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .weather-stat {
+      background: rgba(255,255,255,0.1); border-radius: 10px;
+      padding: 12px; text-align: center;
+    }
+    .weather-stat-icon { font-size: 18px; margin-bottom: 4px; }
+    .weather-stat-label { font-size: 11px; opacity: 0.6; }
+    .weather-stat-val { font-size: 16px; font-weight: 600; }
+    .aqi-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      box-shadow: var(--card-shadow);
+    }
+    .aqi-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 16px; }
+    .aqi-value {
+      font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800;
+      line-height: 1; margin-bottom: 6px;
+    }
+    .aqi-label { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+    .aqi-desc { font-size: 12px; color: var(--text2); margin-bottom: 16px; }
+    .aqi-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .aqi-metric { background: var(--surface3); border-radius: 8px; padding: 10px; }
+    .aqi-metric-val { font-weight: 700; font-size: 16px; }
+    .aqi-metric-label { font-size: 11px; color: var(--text3); }
+    .aqi-hazardous { color: #dc2626; }
+    .aqi-moderate { color: #f59e0b; }
+    .aqi-good { color: #10b981; }
+    .forecast-section { margin-top: 20px; }
+    .forecast-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 12px; }
+    .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    @media (max-width: 600px) { .forecast-grid { grid-template-columns: repeat(4, 1fr); } }
+    .forecast-day {
+      background: var(--surface3); border-radius: 10px;
+      padding: 10px 6px; text-align: center;
+    }
+    .forecast-day-name { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 4px; }
+    .forecast-day-icon { font-size: 20px; margin-bottom: 4px; }
+    .forecast-day-max { font-size: 13px; font-weight: 700; }
+    .forecast-day-min { font-size: 11px; color: var(--text3); }
+
+    /* ── CARDS GRID ── */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+    .cards-grid-2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--card-shadow); transition: all 0.2s;
+    }
+    .card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+    .card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; }
+    .card-badge {
+      font-size: 11px; font-weight: 600; padding: 3px 8px;
+      border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-left: 8px;
+    }
+    .badge-blue { background: #dbeafe; color: #1d4ed8; }
+    .badge-green { background: #d1fae5; color: #065f46; }
+    .badge-orange { background: #fef3c7; color: #92400e; }
+    .badge-purple { background: #ede9fe; color: #5b21b6; }
+    .badge-red { background: #fee2e2; color: #991b1b; }
+    .badge-teal { background: #ccfbf1; color: #134e4a; }
+    .card-location { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text3); margin-bottom: 10px; }
+    .card-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+    .stars { color: #f59e0b; font-size: 13px; }
+    .rating-val { font-size: 13px; font-weight: 700; }
+    .price { font-size: 13px; color: var(--accent2); font-weight: 600; margin-left: 8px; }
+    .card-desc { font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 12px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .tag {
+      font-size: 11px; font-weight: 500;
+      padding: 3px 8px; border-radius: 20px;
+      background: var(--surface3); color: var(--text2);
+    }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .card-time { font-size: 12px; color: var(--text3); }
+    .card-btn {
+      font-size: 12px; font-weight: 600; padding: 6px 14px;
+      border-radius: 20px; border: 1.5px solid var(--accent);
+      color: var(--accent); background: transparent;
+      cursor: pointer; transition: all 0.15s; text-decoration: none;
+    }
+    .card-btn:hover { background: var(--accent); color: white; }
+
+    /* ── NEWS CARDS ── */
+    .news-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      box-shadow: var(--card-shadow); transition: all 0.2s;
+    }
+    .news-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .news-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .news-external { font-size: 12px; color: var(--text3); }
+    .news-desc { font-size: 13px; color: var(--text2); margin-bottom: 14px; line-height: 1.5; }
+    .news-footer { display: flex; align-items: center; justify-content: space-between; }
+    .news-tag { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: #dbeafe; color: #1d4ed8; }
+    .news-lang { font-size: 12px; color: var(--text3); }
+
+    /* ── EMERGENCY ── */
+    .emergency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .emergency-card {
+      border-radius: var(--radius-sm); padding: 18px;
+      border: 1px solid var(--border); background: var(--surface);
+      transition: all 0.2s; cursor: pointer;
+    }
+    .emergency-card:hover { transform: translateY(-2px); box-shadow: var(--card-hover); }
+    .emergency-card.police { border-left: 4px solid #3b82f6; }
+    .emergency-card.medical { border-left: 4px solid #ef4444; }
+    .emergency-card.fire { border-left: 4px solid #f97316; }
+    .emergency-card.all { border-left: 4px solid #8b5cf6; }
+    .emergency-card.women { border-left: 4px solid #ec4899; }
+    .emergency-card.child { border-left: 4px solid #06b6d4; }
+    .emergency-icon { font-size: 22px; margin-bottom: 8px; }
+    .emergency-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .emergency-desc { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
+    .emergency-number { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--primary); }
+
+    /* ── EVENT CARD ── */
+    .event-featured {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;
+    }
+    @media (max-width: 700px) { .event-featured { grid-template-columns: 1fr; } }
+    .event-img-card {
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; box-shadow: var(--card-shadow);
+    }
+    .event-img {
+      width: 100%; height: 240px; object-fit: cover; display: block;
+    }
+    .event-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 50%);
+      padding: 20px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .event-featured-badge {
+      position: absolute; top: 12px; left: 12px;
+      display: flex; gap: 6px;
+    }
+    .badge-featured { background: #f59e0b; color: #000; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .badge-category { background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); color: white; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+    .event-img-title { color: white; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
+    .event-img-meta { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 4px; }
+    .event-detail-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px; box-shadow: var(--card-shadow);
+    }
+    .event-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: #ede9fe; color: #5b21b6; margin-bottom: 10px; }
+    .event-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+    .event-meta { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+    .event-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-top: 10px; }
+    .event-filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 7px 16px; border-radius: 50px; border: 1.5px solid var(--border);
+      background: transparent; font-size: 13px; font-weight: 500; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; transition: all 0.15s; color: var(--text2);
+    }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .filter-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+    /* ── MALL / PLACE CARDS WITH IMAGE ── */
+    .img-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--card-shadow); transition: all 0.2s;
+    }
+    .img-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .img-card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .img-card-body { padding: 16px; }
+    .img-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .img-card-location { font-size: 12px; color: var(--text3); margin-bottom: 8px; }
+    .img-card-desc { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
+
+    /* ── HELPLINE NUMBERS HIGHLIGHT ── */
+    .helpline-banner {
+      background: linear-gradient(135deg, #0f2027, #2c5364);
+      border-radius: var(--radius); padding: 30px;
+      text-align: center; margin-top: 20px;
+    }
+    .helpline-banner p { color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 12px; }
+
+    /* ── METRO SECTION ── */
+    .metro-card {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      border-radius: var(--radius); padding: 24px; color: white;
+    }
+    .metro-line { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .metro-line-color {
+      width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+    }
+    .metro-line-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+    .metro-line-detail { font-size: 12px; opacity: 0.6; }
+    .metro-stations { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    .metro-station {
+      font-size: 11px; padding: 3px 8px; border-radius: 4px;
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--primary); color: rgba(255,255,255,0.6);
+      padding: 40px 20px; text-align: center; margin-top: 0;
+    }
+    .footer-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px; color: white; margin-bottom: 8px; }
+    .footer-desc { font-size: 14px; max-width: 400px; margin: 0 auto 20px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+    .footer-link:hover { color: var(--accent); }
+    .footer-copy { font-size: 12px; opacity: 0.4; }
+
+    /* ── HOSPITAL / SCHOOL CARD ── */
+    .institution-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--card-shadow); transition: all 0.2s;
+    }
+    .institution-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .institution-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .institution-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .icon-hospital { background: #fee2e2; }
+    .icon-school { background: #dbeafe; }
+    .icon-park { background: #d1fae5; }
+    .institution-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+    .institution-type { font-size: 11px; color: var(--text3); }
+    .institution-desc { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
+    .institution-info { display: flex; flex-wrap: wrap; gap: 8px; }
+    .info-pill { font-size: 11px; padding: 3px 8px; border-radius: 20px; background: var(--surface3); color: var(--text2); }
+
+    /* ── IT PARK ── */
+    .itpark-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      box-shadow: var(--card-shadow); transition: all 0.2s;
+      border-top: 3px solid var(--accent);
+    }
+    .itpark-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .itpark-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+    .itpark-sector { font-size: 12px; color: var(--text3); margin-bottom: 10px; }
+    .itpark-companies { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .company-tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--surface3); font-weight: 500; }
+
+    /* ── NEAR ME ── */
+    .nearme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+    .nearme-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 18px;
+      text-align: center; box-shadow: var(--card-shadow);
+      transition: all 0.2s; cursor: pointer;
+    }
+    .nearme-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); border-color: var(--accent); }
+    .nearme-icon { font-size: 28px; margin-bottom: 8px; }
+    .nearme-label { font-size: 13px; font-weight: 600; color: var(--primary); }
+    .nearme-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+    /* SECTION DIVIDER */
+    .section-wrap-alt { background: var(--surface2); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 50px 16px 40px; }
+      .section { padding: 40px 16px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .emergency-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-top">
+    <a class="nav-brand" href="#">
+      <div class="nav-brand-icon">🏙️</div>
+      <div class="nav-brand-text">
+        <div class="nav-brand-name">Gurugram</div>
+        <div class="nav-brand-sub">City Directory</div>
+      </div>
+    </a>
+    <a class="nav-near-me" href="#nearme">🧭 Near Me</a>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" href="#nearme">🧭 Near Me</a>
+    <a class="nav-link" href="#weather">🌤️ Weather</a>
+    <a class="nav-link" href="#news">📰 News</a>
+    <a class="nav-link" href="#emergency">🚨 SOS</a>
+    <a class="nav-link" href="#events">🎪 Events</a>
+    <a class="nav-link" href="#offices">🏢 Offices</a>
+    <a class="nav-link" href="#malls">🛍️ Malls</a>
+    <a class="nav-link" href="#food">🍽️ Food</a>
+    <a class="nav-link" href="#markets">🛒 Markets</a>
+    <a class="nav-link" href="#places">📍 Places</a>
+    <a class="nav-link" href="#fun">🎬 Fun</a>
+    <a class="nav-link" href="#sports">⚽ Sports</a>
+    <a class="nav-link" href="#temples">🛕 Temples</a>
+    <a class="nav-link" href="#homes">🏗️ Homes</a>
+    <a class="nav-link" href="#pg">🏠 PG/Hostel</a>
+    <a class="nav-link" href="#hospitals">🏥 Health</a>
+    <a class="nav-link" href="#schools">🎓 Schools</a>
+    <a class="nav-link" href="#metro">🚇 Transit</a>
+    <a class="nav-link" href="#airport">✈️ Airport</a>
+    <a class="nav-link" href="#itparks">💻 IT Parks</a>
+    <a class="nav-link" href="#govt">🏛️ Govt.</a>
+    <a class="nav-link" href="#daytrips">🗺️ Trips</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-state">Haryana, India</div>
+  <h1 class="hero-title">🏙️ Gurugram Live</h1>
+  <p class="hero-subtitle">Your complete city directory — restaurants, hospitals, schools, Cyber City, metro routes and everything live in Gurugram.</p>
+  <div class="hero-search-wrap">
+    <span class="hero-search-icon">🔍</span>
+    <input class="hero-search" type="text" placeholder="Search Gurugram — restaurants, hospitals, metro, events..." />
+  </div>
+  <div class="hero-chips">
+    <a class="hero-chip" href="#weather">🌤️ Weather</a>
+    <a class="hero-chip" href="#news">📰 News</a>
+    <a class="hero-chip" href="#emergency">🚨 Emergency</a>
+    <a class="hero-chip" href="#events">🎪 Events</a>
+    <a class="hero-chip" href="#offices">🏢 Offices</a>
+    <a class="hero-chip" href="#malls">🛍️ Malls</a>
+    <a class="hero-chip" href="#food">🍽️ Food</a>
+    <a class="hero-chip" href="#markets">🛒 Markets</a>
+    <a class="hero-chip" href="#places">📍 Places</a>
+    <a class="hero-chip" href="#fun">🎬 Fun</a>
+    <a class="hero-chip" href="#sports">⚽ Sports</a>
+    <a class="hero-chip" href="#temples">🛕 Temples</a>
+    <a class="hero-chip" href="#homes">🏗️ Apartments</a>
+    <a class="hero-chip" href="#pg">🏠 PG & Hostels</a>
+    <a class="hero-chip" href="#hospitals">🏥 Hospitals</a>
+    <a class="hero-chip" href="#schools">🎓 Schools</a>
+    <a class="hero-chip" href="#nearme">🧭 Near Me</a>
+    <a class="hero-chip" href="#metro">🚇 Connect</a>
+    <a class="hero-chip" href="#airport">✈️ Airport</a>
+    <a class="hero-chip" href="#itparks">💻 IT Parks</a>
+    <a class="hero-chip" href="#govt">🏛️ Govt.</a>
+    <a class="hero-chip" href="#daytrips">🗺️ Day Trips</a>
+  </div>
+</section>
+
+<!-- WEATHER -->
+<div id="weather">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🌤️ Live Weather & Air Quality</div>
+      <div class="section-subtitle">Current conditions, AQI, and 14-day forecast for Gurugram — powered by Open-Meteo</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="weather-grid reveal">
+      <div>
+        <div class="weather-main" id="weather-main">
+          <div class="weather-city">📍 Gurugram, Haryana</div>
+          <div class="weather-temp-row">
+            <div>
+              <div style="display:flex;align-items:flex-start;gap:4px">
+                <div class="weather-temp" id="wtemp">--</div>
+                <div class="weather-unit">°C</div>
+              </div>
+              <div class="weather-desc" id="wdesc">Loading...</div>
+              <div class="weather-feels" id="wfeels">Feels like --°C</div>
+            </div>
+            <div class="weather-emoji" id="wemoji">🌤️</div>
+          </div>
+          <div class="weather-stats">
+            <div class="weather-stat">
+              <div class="weather-stat-icon">💧</div>
+              <div class="weather-stat-label">Humidity</div>
+              <div class="weather-stat-val" id="whumidity">--%</div>
+            </div>
+            <div class="weather-stat">
+              <div class="weather-stat-icon">💨</div>
+              <div class="weather-stat-label">Wind</div>
+              <div class="weather-stat-val" id="wwind">-- km/h</div>
+            </div>
+            <div class="weather-stat">
+              <div class="weather-stat-icon">🌧️</div>
+              <div class="weather-stat-label">Precipitation</div>
+              <div class="weather-stat-val" id="wprecip">-- mm</div>
+            </div>
+          </div>
+        </div>
+        <div class="forecast-section" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:16px;box-shadow:var(--card-shadow);">
+          <div class="forecast-title">📅 14-Day Forecast</div>
+          <div class="forecast-grid" id="forecast-grid">
+            <div class="forecast-day"><div class="forecast-day-name">---</div><div class="forecast-day-icon">--</div><div class="forecast-day-max">--°</div><div class="forecast-day-min">--°</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="aqi-card" style="align-self:start;">
+        <div class="aqi-title">Air Quality Index</div>
+        <div class="aqi-value aqi-hazardous" id="aqi-val">--</div>
+        <div class="aqi-label" id="aqi-label">Loading...</div>
+        <div class="aqi-desc" id="aqi-desc">Fetching air quality data...</div>
+        <div class="aqi-metrics">
+          <div class="aqi-metric">
+            <div class="aqi-metric-val" id="aqi-pm25">--</div>
+            <div class="aqi-metric-label">PM2.5 μg/m³</div>
+          </div>
+          <div class="aqi-metric">
+            <div class="aqi-metric-val" id="aqi-pm10">--</div>
+            <div class="aqi-metric-label">PM10 μg/m³</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<div id="news" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">📰 News & Media</div>
+      <div class="section-subtitle">Stay up-to-date with Gurugram's top news sources — curated local and national coverage</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="news-card">
+        <div class="news-card-name">Hindustan Times – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">In-depth reporting on Gurugram's infrastructure, corporate news, real estate, and city development from one of India's leading English dailies.</div>
+        <div class="news-footer"><span class="news-tag">English Daily</span><span class="news-lang">English</span></div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-name">Times of India – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">Latest breaking news, civic issues, crime, sports, and city development updates from Gurugram's most-read English daily.</div>
+        <div class="news-footer"><span class="news-tag">English Daily</span><span class="news-lang">English</span></div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-name">Navbharat Times – Gurgaon <span class="news-external">↗</span></div>
+        <div class="news-desc">Hindi-language daily covering hyperlocal stories, civic grievances, and community news across Gurugram and Faridabad.</div>
+        <div class="news-footer"><span class="news-tag" style="background:#fef3c7;color:#92400e;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-name">Gurugram Metro – Local News <span class="news-external">↗</span></div>
+        <div class="news-desc">Dedicated hyperlocal news portal covering sector-wise updates, traffic, construction, RWA issues, and resident welfare 24/7.</div>
+        <div class="news-footer"><span class="news-tag" style="background:#d1fae5;color:#065f46;">Hyperlocal</span><span class="news-lang">Hindi/English</span></div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-name">India Today – Haryana <span class="news-external">↗</span></div>
+        <div class="news-desc">National news magazine's dedicated Haryana coverage with feature stories, interviews, and investigative reports on urban development.</div>
+        <div class="news-footer"><span class="news-tag" style="background:#ede9fe;color:#5b21b6;">News Magazine</span><span class="news-lang">English</span></div>
+      </div>
+      <div class="news-card">
+        <div class="news-card-name">The Print – Haryana/NCR <span class="news-external">↗</span></div>
+        <div class="news-desc">Independent journalism covering policy, governance, and accountability in Haryana with significant Gurugram and NCR coverage.</div>
+        <div class="news-footer"><span class="news-tag" style="background:#fee2e2;color:#991b1b;">Independent</span><span class="news-lang">English</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMERGENCY -->
+<div id="emergency">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🚨 Emergency & Helplines</div>
+      <div class="section-subtitle">Critical Gurugram emergency numbers — tap any number to call directly</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="emergency-grid reveal">
+      <div class="emergency-card police">
+        <div class="emergency-icon">👮</div>
+        <div class="emergency-name">Police Emergency</div>
+        <div class="emergency-desc">Gurugram Police — immediate law enforcement response</div>
+        <div class="emergency-number">100</div>
+      </div>
+      <div class="emergency-card medical">
+        <div class="emergency-icon">🚑</div>
+        <div class="emergency-name">Ambulance / Medical</div>
+        <div class="emergency-desc">Emergency medical services and ambulance dispatch</div>
+        <div class="emergency-number">108</div>
+      </div>
+      <div class="emergency-card fire">
+        <div class="emergency-icon">🔥</div>
+        <div class="emergency-name">Fire Brigade</div>
+        <div class="emergency-desc">Gurugram fire station — fire rescue and emergencies</div>
+        <div class="emergency-number">101</div>
+      </div>
+      <div class="emergency-card all">
+        <div class="emergency-icon">📞</div>
+        <div class="emergency-name">Haryana 112 — All</div>
+        <div class="emergency-desc">Unified emergency response — police, fire, medical</div>
+        <div class="emergency-number">112</div>
+      </div>
+      <div class="emergency-card women">
+        <div class="emergency-icon">👩</div>
+        <div class="emergency-name">Women Helpline</div>
+        <div class="emergency-desc">Haryana women safety and support helpline</div>
+        <div class="emergency-number">1091</div>
+      </div>
+      <div class="emergency-card child">
+        <div class="emergency-icon">🧒</div>
+        <div class="emergency-name">Child Helpline</div>
+        <div class="emergency-desc">Child protection and welfare emergency services</div>
+        <div class="emergency-number">1098</div>
+      </div>
+      <div class="emergency-card" style="border-left:4px solid #06b6d4">
+        <div class="emergency-icon">🏙️</div>
+        <div class="emergency-name">MCG Helpline</div>
+        <div class="emergency-desc">Municipal Corporation of Gurugram — civic complaints</div>
+        <div class="emergency-number">1800-180-1817</div>
+      </div>
+      <div class="emergency-card" style="border-left:4px solid #f59e0b">
+        <div class="emergency-icon">⚡</div>
+        <div class="emergency-name">DHBVN Power</div>
+        <div class="emergency-desc">Dakshin Haryana electricity emergency services</div>
+        <div class="emergency-number">1800-180-4334</div>
+      </div>
+      <div class="emergency-card" style="border-left:4px solid #10b981">
+        <div class="emergency-icon">🚦</div>
+        <div class="emergency-name">Traffic Police</div>
+        <div class="emergency-desc">Gurugram traffic police control room</div>
+        <div class="emergency-number">0124-2322222</div>
+      </div>
+      <div class="emergency-card" style="border-left:4px solid #6366f1">
+        <div class="emergency-icon">💻</div>
+        <div class="emergency-name">Cyber Crime</div>
+        <div class="emergency-desc">Report online fraud and cyber crime</div>
+        <div class="emergency-number">1930</div>
+      </div>
+      <div class="emergency-card" style="border-left:4px solid #8b5cf6">
+        <div class="emergency-icon">💧</div>
+        <div class="emergency-name">HSVP Water Board</div>
+        <div class="emergency-desc">Haryana Shahari Vikas Pradhikaran water complaints</div>
+        <div class="emergency-number">1800-180-5678</div>
+      </div>
+      <div class="emergency-card" style="border-left:4px solid #ec4899">
+        <div class="emergency-icon">🏛️</div>
+        <div class="emergency-name">District Control Room</div>
+        <div class="emergency-desc">Gurugram district administration control room</div>
+        <div class="emergency-number">0124-2320002</div>
+      </div>
+    </div>
+    <div class="helpline-banner">
+      <p style="color:rgba(255,255,255,0.8);font-size:14px;">Save these numbers in your phone. Tap any number to call directly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<div id="events" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🎪 Events & Festivals</div>
+      <div class="section-subtitle">Annual celebrations, cultural fairs, and sporting events that bring Gurugram to life</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="event-filters reveal">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Cultural</button>
+      <button class="filter-btn">Sports</button>
+      <button class="filter-btn">Religious</button>
+      <button class="filter-btn">Commercial</button>
+      <button class="filter-btn">Music</button>
+      <button class="filter-btn">Food</button>
+    </div>
+    <div class="event-featured reveal">
+      <div class="event-img-card">
+        <img class="event-img" src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=600&q=80" alt="Surajkund Mela" />
+        <div class="event-img-overlay">
+          <div class="event-featured-badge"><span class="badge-featured">FEATURED</span><span class="badge-category">Cultural</span></div>
+          <div class="event-img-title">Surajkund International Crafts Mela</div>
+          <div class="event-img-meta">📅 Feb 1–16 (Annual) &nbsp;📍 Surajkund, Faridabad</div>
+        </div>
+      </div>
+      <div class="event-detail-card">
+        <span class="event-tag">Cultural</span>
+        <div class="event-title">Surajkund International Crafts Mela</div>
+        <div class="event-meta">📅 Feb 1–16 (Annual)</div>
+        <div class="event-meta">📍 Surajkund, near Gurugram border</div>
+        <div class="event-desc">Asia's largest crafts fair drawing artisans from all over India and abroad. Features folk performances, traditional food, handicrafts, and cultural showcases — a must-visit NCR event every February.</div>
+      </div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">Gurugram Marathon</div><span class="card-badge badge-orange">Sports</span></div>
+        <div class="card-location">📅 Nov (Annual) &nbsp;📍 Cyber City Hub</div>
+        <div class="card-desc">Annual marathon attracting thousands of runners through Gurugram's key corridors. Categories from 5K fun run to full 42K marathon with corporate participation.</div>
+        <div class="card-tags"><span class="tag">Running</span><span class="tag">Corporate</span><span class="tag">5K / 10K / 42K</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">NH7 Weekender NCR</div><span class="card-badge badge-purple">Music</span></div>
+        <div class="card-location">📅 Oct–Nov &nbsp;📍 Leisure Valley / IPCA</div>
+        <div class="card-desc">India's happiest music festival returns to NCR. Multi-genre lineup across multiple stages featuring indie, electronic, and international artists over 2 days.</div>
+        <div class="card-tags"><span class="tag">Indie</span><span class="tag">Electronic</span><span class="tag">International</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Diwali Mela & Fireworks</div><span class="card-badge badge-red">Religious</span></div>
+        <div class="card-location">📅 Oct–Nov (Annual) &nbsp;📍 Leisure Valley Park</div>
+        <div class="card-desc">Grand Diwali celebration with lights, fireworks, cultural performances, and food stalls. One of the biggest community festivals in the city.</div>
+        <div class="card-tags"><span class="tag">Festival</span><span class="tag">Fireworks</span><span class="tag">Family</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Cyber Hub Food Festival</div><span class="card-badge badge-green">Food</span></div>
+        <div class="card-location">📅 Multiple dates &nbsp;📍 Cyber Hub</div>
+        <div class="card-desc">Regular food and culture festivals at DLF Cyber Hub featuring celebrity chef appearances, live music, craft beers, and international cuisine pop-ups.</div>
+        <div class="card-tags"><span class="tag">Food</span><span class="tag">Live Music</span><span class="tag">Craft Beer</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Holi Mela — Gurugram</div><span class="card-badge badge-red">Religious</span></div>
+        <div class="card-location">📅 March (Annual) &nbsp;📍 Sector 29 Ground</div>
+        <div class="card-desc">Vibrant Holi celebration with organic colours, dhol performers, traditional sweets, and community gatherings across residential sectors.</div>
+        <div class="card-tags"><span class="tag">Holi</span><span class="tag">Community</span><span class="tag">Music</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Auto Expo — NCR</div><span class="card-badge badge-blue">Commercial</span></div>
+        <div class="card-location">📅 Biennial &nbsp;📍 Bharat Mandapam / IMT Manesar</div>
+        <div class="card-desc">Asia's largest motor show with global debuts, concept cars, electric vehicles, and auto industry showcases. Over 500,000 visitors across 10 days.</div>
+        <div class="card-tags"><span class="tag">Automobiles</span><span class="tag">EVs</span><span class="tag">Technology</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OFFICES -->
+<div id="offices">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🏢 Office & Coworking Spaces</div>
+      <div class="section-subtitle">Premium coworking and managed office solutions across Gurugram's key business corridors</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">WeWork Gurugram</div><span class="card-badge badge-blue">Coworking</span></div>
+        <div class="card-location">📍 DLF Cyber City, Phase II</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹9,000 – ₹18,000 / month</span></div>
+        <div class="card-desc">Premium coworking in the heart of Cyber City with world-class amenities, stunning views, and a vibrant community of professionals.</div>
+        <div class="card-tags"><span class="tag">Hot Desks</span><span class="tag">Private Cabins</span><span class="tag">Conference Rooms</span><span class="tag">24/7 Access</span></div>
+        <div class="card-footer"><span></span><a class="card-btn" href="#">Visit Website</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Awfis Gurugram</div><span class="card-badge badge-blue">Coworking</span></div>
+        <div class="card-location">📍 MG Road, Sector 28</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span><span class="price">₹5,000 – ₹12,000 / month</span></div>
+        <div class="card-desc">Flexible coworking spaces with daily, weekly, and monthly plans. Ideal for freelancers, startups, and SMEs across multiple Gurugram locations.</div>
+        <div class="card-tags"><span class="tag">Flexible Plans</span><span class="tag">Wi-Fi</span><span class="tag">Printing</span><span class="tag">Café</span></div>
+        <div class="card-footer"><span></span><a class="card-btn" href="#">Visit Website</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">91Springboard</div><span class="card-badge badge-blue">Coworking</span></div>
+        <div class="card-location">📍 Golf Course Road, Sector 54</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span><span class="price">₹6,000 – ₹14,000 / month</span></div>
+        <div class="card-desc">India's largest coworking network offering startup-friendly plans with a strong community, mentorship access, and regular networking events.</div>
+        <div class="card-tags"><span class="tag">Open Desks</span><span class="tag">Event Space</span><span class="tag">Mentorship</span></div>
+        <div class="card-footer"><span></span><a class="card-btn" href="#">Visit Website</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Smartworks</div><span class="card-badge badge-purple">Managed Office</span></div>
+        <div class="card-location">📍 Unitech Cyber Park, Sector 39</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.4</span><span class="price">₹7,500 – ₹16,000 / month</span></div>
+        <div class="card-desc">Enterprise-grade flexible workspaces with plug-and-play infrastructure and premium end-to-end managed office services for corporates.</div>
+        <div class="card-tags"><span class="tag">Plug & Play</span><span class="tag">Biometric</span><span class="tag">Cafeteria</span><span class="tag">Parking</span></div>
+        <div class="card-footer"><span></span><a class="card-btn" href="#">Visit Website</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">IndiQube</div><span class="card-badge badge-purple">Managed Office</span></div>
+        <div class="card-location">📍 Spaze IT Park, Sector 49</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹8,000 – ₹17,000 / month</span></div>
+        <div class="card-desc">Fully managed office solutions tailored for mid-size and enterprise clients with transparent pricing and dedicated support team.</div>
+        <div class="card-tags"><span class="tag">Customisable</span><span class="tag">CCTV</span><span class="tag">Power Backup</span></div>
+        <div class="card-footer"><span></span><a class="card-btn" href="#">Visit Website</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">CoWrks Gurugram</div><span class="card-badge badge-teal">Enterprise</span></div>
+        <div class="card-location">📍 RMZ Infinity, Golf Course Ext Rd</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span><span class="price">₹8,500 – ₹20,000 / month</span></div>
+        <div class="card-desc">Premium workspace brand focused on enterprise clients. State-of-the-art design, high-speed internet, and a curated professional community.</div>
+        <div class="card-tags"><span class="tag">Enterprise</span><span class="tag">Lounge</span><span class="tag">Rooftop</span></div>
+        <div class="card-footer"><span></span><a class="card-btn" href="#">Visit Website</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MALLS -->
+<div id="malls" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🛍️ Shopping Malls</div>
+      <div class="section-subtitle">Premier shopping destinations across Gurugram — from luxury retail to family entertainment</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=400&q=80" alt="Ambience Mall" />
+        <div class="img-card-body">
+          <div class="img-card-name">Ambience Mall</div>
+          <div class="img-card-location">📍 NH-48, Sector 24</div>
+          <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span></div>
+          <div class="img-card-desc">One of India's largest and most premium malls with 250+ stores, 5-star hotels, luxury brands, a multiplex, and fine dining restaurants.</div>
+          <div class="card-tags"><span class="tag">Luxury</span><span class="tag">Multiplex</span><span class="tag">Fine Dining</span><span class="tag">Hotel</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?w=400&q=80" alt="DLF Cyber Hub" />
+        <div class="img-card-body">
+          <div class="img-card-name">DLF Cyber Hub</div>
+          <div class="img-card-location">📍 DLF Phase II, Cyber City</div>
+          <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.7</span></div>
+          <div class="img-card-desc">Iconic food, retail, and entertainment hub in the heart of Cyber City. 90+ restaurants, bars, and branded stores with vibrant nightlife.</div>
+          <div class="card-tags"><span class="tag">Restaurants</span><span class="tag">Bars</span><span class="tag">Nightlife</span><span class="tag">Corporate</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1586880244406-556ebe35f282?w=400&q=80" alt="MGF Metropolitan Mall" />
+        <div class="img-card-body">
+          <div class="img-card-name">MGF Metropolitan Mall</div>
+          <div class="img-card-location">📍 MG Road, Sector 14</div>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span></div>
+          <div class="img-card-desc">One of Gurugram's oldest and most accessible malls on MG Road with fashion retail, food court, and entertainment on multiple levels.</div>
+          <div class="card-tags"><span class="tag">Fashion</span><span class="tag">Food Court</span><span class="tag">Metro Access</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1567449303183-ae0d6ed1498c?w=400&q=80" alt="South Point Mall" />
+        <div class="img-card-body">
+          <div class="img-card-name">South Point Mall</div>
+          <div class="img-card-location">📍 Golf Course Road, Sector 53</div>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.0</span></div>
+          <div class="img-card-desc">Upscale lifestyle mall with premium brands, gourmet dining, and a family entertainment zone catering to south Gurugram residents.</div>
+          <div class="card-tags"><span class="tag">Lifestyle</span><span class="tag">Dining</span><span class="tag">Premium</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=80" alt="Ardee Mall" />
+        <div class="img-card-body">
+          <div class="img-card-name">Ardee Mall</div>
+          <div class="img-card-location">📍 Sector 52, Golf Course Extension</div>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">3.9</span></div>
+          <div class="img-card-desc">Popular neighbourhood mall with a good mix of fashion, electronics, and entertainment, serving the rapidly growing New Gurugram areas.</div>
+          <div class="card-tags"><span class="tag">Electronics</span><span class="tag">Fashion</span><span class="tag">Multiplex</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" alt="Omaxe Gurgaon Mall" />
+        <div class="img-card-body">
+          <div class="img-card-name">Omaxe Gurgaon Mall</div>
+          <div class="img-card-location">📍 Sector 49, Sohna Road</div>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">3.8</span></div>
+          <div class="img-card-desc">Large format retail mall with major anchor stores, a food court, hypermarket, and family entertainment catering to south Gurugram.</div>
+          <div class="card-tags"><span class="tag">Hypermarket</span><span class="tag">Family</span><span class="tag">Food Court</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOD -->
+<div id="food">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🍽️ Eating Joints</div>
+      <div class="section-subtitle">Best restaurants, dhabas, and food destinations across Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">Cyber Hub — Food Street</div><span class="card-badge badge-orange">Multi-Cuisine</span></div>
+        <div class="card-location">📍 DLF Cyber City, Phase II</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.7</span><span class="price">₹800 – ₹2,500 for two</span></div>
+        <div class="card-desc">90+ premium restaurants, cafés, and bars in a vibrant outdoor setting. From casual bites to fine dining — Gurugram's definitive food destination.</div>
+        <div class="card-tags"><span class="tag">Italian</span><span class="tag">Japanese</span><span class="tag">Craft Beer</span><span class="tag">Rooftop</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Sector 29 Food Hub</div><span class="card-badge badge-green">Street Food</span></div>
+        <div class="card-location">📍 Sector 29, Huda Market Area</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span><span class="price">₹200 – ₹800 for two</span></div>
+        <div class="card-desc">Gurugram's most popular street food corridor with dozens of vendors, dhabas, and casual restaurants. Famous for kebabs, momos, and chaat.</div>
+        <div class="card-tags"><span class="tag">Kebabs</span><span class="tag">Momos</span><span class="tag">Chaat</span><span class="tag">Budget</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Golf Course Road Dining</div><span class="card-badge badge-purple">Fine Dining</span></div>
+        <div class="card-location">📍 Golf Course Road, Sector 54</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹1,500 – ₹4,000 for two</span></div>
+        <div class="card-desc">Premium dining strip featuring signature restaurants like Farzi Café, Lord of the Drinks, and Massive Restaurants — ideal for corporate dinners.</div>
+        <div class="card-tags"><span class="tag">Fine Dining</span><span class="tag">Bar</span><span class="tag">Corporate</span><span class="tag">Rooftop</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Galleria Market Cafés</div><span class="card-badge badge-blue">Café</span></div>
+        <div class="card-location">📍 DLF Phase IV, Sector 28</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span><span class="price">₹400 – ₹1,200 for two</span></div>
+        <div class="card-desc">Tree-lined market with popular cafés, bakeries, and casual restaurants. A favourite weekend spot for DLF Phase 4 and Sushant Lok residents.</div>
+        <div class="card-tags"><span class="tag">Café</span><span class="tag">Bakery</span><span class="tag">Brunch</span><span class="tag">Outdoor</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Sohna Road Dhabas</div><span class="card-badge badge-orange">Dhaba</span></div>
+        <div class="card-location">📍 Sohna Road, Sector 48</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.0</span><span class="price">₹150 – ₹500 for two</span></div>
+        <div class="card-desc">Row of authentic Punjabi dhabas serving dal makhani, butter naan, and tandoori chicken. Popular with construction workers and night owls alike.</div>
+        <div class="card-tags"><span class="tag">Punjabi</span><span class="tag">Dal Makhani</span><span class="tag">Budget</span><span class="tag">24 Hours</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Palam Vihar Market</div><span class="card-badge badge-green">Local Food</span></div>
+        <div class="card-location">📍 Palam Vihar, Sector 2</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span><span class="price">₹100 – ₹400 for two</span></div>
+        <div class="card-desc">Bustling neighbourhood market with affordable local eateries, juice centres, and snack stalls. Great for evening chai and street food.</div>
+        <div class="card-tags"><span class="tag">Chai</span><span class="tag">Snacks</span><span class="tag">Local</span><span class="tag">Affordable</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARKETS -->
+<div id="markets" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🛒 Local Markets & Bazaars</div>
+      <div class="section-subtitle">Traditional markets, weekly haats, and shopping bazaars across Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">Sadar Bazaar Gurugram</div><span class="card-badge badge-orange">Wholesale</span></div>
+        <div class="card-location">📍 Old Gurugram, Sadar Bazaar Road</div>
+        <div class="card-desc">Old Gurugram's historic wholesale market for clothing, electronics, vegetables, and daily essentials. Busiest on weekends.</div>
+        <div class="card-tags"><span class="tag">Clothing</span><span class="tag">Vegetables</span><span class="tag">Electronics</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Galleria Market</div><span class="card-badge badge-blue">Upscale</span></div>
+        <div class="card-location">📍 DLF Phase IV, Sector 28</div>
+        <div class="card-desc">Upscale open-air market with designer boutiques, organic stores, salons, and premium food options. Popular with DLF residents.</div>
+        <div class="card-tags"><span class="tag">Designer</span><span class="tag">Organic</span><span class="tag">Boutique</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Shankar Chowk Market</div><span class="card-badge badge-green">Electronics</span></div>
+        <div class="card-location">📍 Shankar Chowk, Sector 15</div>
+        <div class="card-desc">Popular electronics, mobile, and computer accessories market. Best prices on secondhand laptops, phone repairs, and accessories.</div>
+        <div class="card-tags"><span class="tag">Mobile Phones</span><span class="tag">Laptops</span><span class="tag">Accessories</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Sohna Road Wholesale</div><span class="card-badge badge-orange">Wholesale</span></div>
+        <div class="card-location">📍 Sohna Road, Sector 48</div>
+        <div class="card-desc">Large wholesale market for construction materials, furniture, and home décor. Popular with builders and interior designers across NCR.</div>
+        <div class="card-tags"><span class="tag">Furniture</span><span class="tag">Home Décor</span><span class="tag">Construction</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLACES -->
+<div id="places">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">📍 Places to Visit</div>
+      <div class="section-subtitle">Gurugram's must-visit landmarks, heritage sites, and natural escapes</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&q=80" alt="Kingdom of Dreams" />
+        <div class="img-card-body">
+          <div class="img-card-name">Kingdom of Dreams</div>
+          <div class="img-card-location">📍 Sector 29, Entertainment City</div>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span></div>
+          <div class="img-card-desc">India's first live entertainment and theatre destination. Features Broadway-style Bollywood shows, a cultural gully, and food from 14 Indian states.</div>
+          <div class="card-tags"><span class="tag">Theatre</span><span class="tag">Bollywood</span><span class="tag">Cultural</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80" alt="Leisure Valley Park" />
+        <div class="img-card-body">
+          <div class="img-card-name">Leisure Valley Park</div>
+          <div class="img-card-location">📍 Sector 29</div>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span></div>
+          <div class="img-card-desc">Urban green lung in the heart of Gurugram with jogging tracks, manicured gardens, amphitheatre, and regular community events.</div>
+          <div class="card-tags"><span class="tag">Park</span><span class="tag">Jogging</span><span class="tag">Events</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?w=400&q=80" alt="Sultanpur Bird Sanctuary" />
+        <div class="img-card-body">
+          <div class="img-card-name">Sultanpur Bird Sanctuary</div>
+          <div class="img-card-location">📍 Sultanpur, 15 km from Gurugram</div>
+          <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.4</span></div>
+          <div class="img-card-desc">National park and bird sanctuary hosting 250+ species of resident and migratory birds. Best visited October–March during migration season.</div>
+          <div class="card-tags"><span class="tag">Birdwatching</span><span class="tag">Nature</span><span class="tag">Photography</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" alt="Sheetla Mata Mandir" />
+        <div class="img-card-body">
+          <div class="img-card-name">Sheetla Mata Mandir</div>
+          <div class="img-card-location">📍 Old Gurugram</div>
+          <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.6</span></div>
+          <div class="img-card-desc">Ancient temple dedicated to Goddess Sheetla Mata — Gurugram's most revered religious site. Crowded during Navratri and Sheetla Ashtami.</div>
+          <div class="card-tags"><span class="tag">Temple</span><span class="tag">Heritage</span><span class="tag">Religious</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FUN -->
+<div id="fun" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🎬 Entertainment</div>
+      <div class="section-subtitle">Cinemas, gaming, and leisure experiences in Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">PVR IMAX — Ambience Mall</div><span class="card-badge badge-blue">Cinema</span></div>
+        <div class="card-location">📍 Ambience Mall, NH-48</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span></div>
+        <div class="card-desc">Premium IMAX and 4DX screens with motion seating. Largest cinema complex in Gurugram with VIP lounges and in-seat dining experience.</div>
+        <div class="card-tags"><span class="tag">IMAX</span><span class="tag">4DX</span><span class="tag">VIP</span></div>
+        <div class="card-footer"><span class="card-time">10:00 AM – 11:30 PM</span><span style="font-size:13px;font-weight:600;color:var(--accent2)">₹200 – ₹800</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Smaaash Entertainment</div><span class="card-badge badge-purple">Gaming</span></div>
+        <div class="card-location">📍 DLF Cyber Hub</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span></div>
+        <div class="card-desc">Sports entertainment centre with VR gaming, bowling, indoor cricket simulators, go-karts, and a sports bar. Perfect for corporate events.</div>
+        <div class="card-tags"><span class="tag">VR Gaming</span><span class="tag">Bowling</span><span class="tag">Go-Kart</span></div>
+        <div class="card-footer"><span class="card-time">12:00 PM – 11:00 PM</span><span style="font-size:13px;font-weight:600;color:var(--accent2)">₹500 – ₹2,000</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Kingdom of Dreams</div><span class="card-badge badge-orange">Theatre</span></div>
+        <div class="card-location">📍 Sector 29</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span></div>
+        <div class="card-desc">India's first live entertainment complex with two grand theatres hosting spectacular Bollywood musical productions and cultural shows nightly.</div>
+        <div class="card-tags"><span class="tag">Bollywood Shows</span><span class="tag">Live Theatre</span><span class="tag">Dinner</span></div>
+        <div class="card-footer"><span class="card-time">Shows at 7:30 PM & 9:30 PM</span><span style="font-size:13px;font-weight:600;color:var(--accent2)">₹1,500 – ₹5,000</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPORTS -->
+<div id="sports">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">⚽ Sports & Recreation</div>
+      <div class="section-subtitle">Sports facilities, golf courses, and fitness centres across Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">DLF Golf & Country Club</div><span class="card-badge badge-green">Golf</span></div>
+        <div class="card-location">📍 DLF Phase V, Sector 42</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.8</span></div>
+        <div class="card-desc">Premier 18-hole golf course hosting international tournaments. Features a clubhouse, swimming pool, tennis courts, and fine dining for members.</div>
+        <div class="card-tags"><span class="tag">Golf</span><span class="tag">Tennis</span><span class="tag">Swimming</span><span class="tag">Members Only</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Tau Devi Lal Stadium</div><span class="card-badge badge-blue">Multi-Sport</span></div>
+        <div class="card-location">📍 Sector 38</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.0</span></div>
+        <div class="card-desc">Large multi-purpose sports stadium with cricket nets, athletic tracks, football grounds, and facilities for state-level competitions.</div>
+        <div class="card-tags"><span class="tag">Cricket</span><span class="tag">Athletics</span><span class="tag">Football</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Gurugram Cricket Academy</div><span class="card-badge badge-orange">Cricket</span></div>
+        <div class="card-location">📍 Sector 17</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span></div>
+        <div class="card-desc">Professional cricket coaching academy with indoor nets, video analysis, and certified coaches training youth and adult cricketers.</div>
+        <div class="card-tags"><span class="tag">Coaching</span><span class="tag">Indoor Nets</span><span class="tag">Youth</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEMPLES -->
+<div id="temples" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🛕 Temples & Places of Worship</div>
+      <div class="section-subtitle">Gurugram's sacred temples and religious destinations</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon" style="background:#fef3c7;">🛕</div>
+          <div><div class="institution-name">Sheetla Mata Mandir</div><div class="institution-type">Ancient Temple • Old Gurugram</div></div>
+        </div>
+        <div class="institution-desc">Most revered temple in Gurugram. Devoted to Goddess Sheetla Mata, it attracts lakhs of devotees during Navratri and Ashtami.</div>
+        <div class="institution-info"><span class="info-pill">Ancient Temple</span><span class="info-pill">Navratri Special</span><span class="info-pill">Open Daily</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon" style="background:#ede9fe;">🕌</div>
+          <div><div class="institution-name">Dargah of Shah Chokha</div><div class="institution-type">Sufi Shrine • Sector 18</div></div>
+        </div>
+        <div class="institution-desc">Centuries-old Sufi dargah known for its spiritual atmosphere. Visited by people of all faiths, especially during Urs celebrations.</div>
+        <div class="institution-info"><span class="info-pill">Sufi Shrine</span><span class="info-pill">All Faiths Welcome</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon" style="background:#dbeafe;">⛪</div>
+          <div><div class="institution-name">Gurudwara Sector 46</div><div class="institution-type">Sikh Gurudwara • Sector 46</div></div>
+        </div>
+        <div class="institution-desc">Prominent Sikh Gurudwara serving langars (community meals) and regular kirtan. Active centre for community welfare and festivals.</div>
+        <div class="institution-info"><span class="info-pill">Langar</span><span class="info-pill">Kirtan</span><span class="info-pill">Open 24hrs</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon" style="background:#fef3c7;">🛕</div>
+          <div><div class="institution-name">Pracheen Hanuman Mandir</div><div class="institution-type">Ancient Temple • Sector 57</div></div>
+        </div>
+        <div class="institution-desc">Ancient Hanuman temple with large number of devotees on Tuesdays and Saturdays. Known for its peaceful garden premises.</div>
+        <div class="institution-info"><span class="info-pill">Tues & Sat Bhog</span><span class="info-pill">Garden</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOMES -->
+<div id="homes">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🏗️ High-Rise Apartments</div>
+      <div class="section-subtitle">Premium residential complexes and new developments across Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">DLF The Crest</div><span class="card-badge badge-purple">Luxury</span></div>
+        <div class="card-location">📍 DLF Phase 5, Sector 54</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.7</span><span class="price">₹3.5 – ₹7 Cr</span></div>
+        <div class="card-desc">Ultra-luxury residential tower with concierge services, infinity pools, and world-class amenities in the prime Golf Course Road belt.</div>
+        <div class="card-tags"><span class="tag">3/4 BHK</span><span class="tag">Pool</span><span class="tag">Concierge</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Emaar Palm Heights</div><span class="card-badge badge-blue">Premium</span></div>
+        <div class="card-location">📍 Sector 77, New Gurugram</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span><span class="price">₹1.2 – ₹2.8 Cr</span></div>
+        <div class="card-desc">Premium high-rise apartments in New Gurugram with modern amenities, clubhouse, and proximity to NH-48 and Southern Peripheral Road.</div>
+        <div class="card-tags"><span class="tag">2/3 BHK</span><span class="tag">Clubhouse</span><span class="tag">New Gurugram</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Sobha City</div><span class="card-badge badge-green">Ready to Move</span></div>
+        <div class="card-location">📍 Sector 108, Dwarka Expressway</div>
+        <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹80L – ₹1.8 Cr</span></div>
+        <div class="card-desc">Integrated township by Sobha with fully constructed towers, lush green landscape, and easy access to Dwarka Expressway metro.</div>
+        <div class="card-tags"><span class="tag">Ready to Move</span><span class="tag">Metro Nearby</span><span class="tag">Township</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PG -->
+<div id="pg" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🏠 Hostels & PG Accommodation</div>
+      <div class="section-subtitle">Affordable paying guest and hostel options for students and working professionals in Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">Stanza Living</div><span class="card-badge badge-purple">Co-Living</span></div>
+        <div class="card-location">📍 Multiple — Cyber City, Sector 14, Sohna Rd</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span><span class="price">₹8,000 – ₹18,000 / month</span></div>
+        <div class="card-desc">Premium co-living with furnished rooms, daily housekeeping, high-speed WiFi, gym, and community events. App-based access management.</div>
+        <div class="card-tags"><span class="tag">WiFi</span><span class="tag">Meals</span><span class="tag">Gym</span><span class="tag">AC Rooms</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">OYO Life</div><span class="card-badge badge-red">PG</span></div>
+        <div class="card-location">📍 Sector 14, 28, 56 — Multiple Locations</div>
+        <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">3.9</span><span class="price">₹5,000 – ₹12,000 / month</span></div>
+        <div class="card-desc">Managed PG accommodations with standardised amenities. Includes housekeeping, WiFi, and food. Popular with young professionals and students.</div>
+        <div class="card-tags"><span class="tag">WiFi</span><span class="tag">Furnished</span><span class="tag">Security</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">Sector 14 PG Cluster</div><span class="card-badge badge-green">Budget PG</span></div>
+        <div class="card-location">📍 Sector 14, Old Gurugram</div>
+        <div class="card-rating"><span class="stars">★★★☆☆</span><span class="rating-val">3.6</span><span class="price">₹3,500 – ₹8,000 / month</span></div>
+        <div class="card-desc">Dense cluster of independent PG homes near MG Road metro. Budget options with attached bathrooms, meals included. Well-known among MNC freshers.</div>
+        <div class="card-tags"><span class="tag">Budget</span><span class="tag">Meals</span><span class="tag">Metro Nearby</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOSPITALS -->
+<div id="hospitals">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🏥 Hospitals & Medical</div>
+      <div class="section-subtitle">Leading hospitals, specialty clinics, and emergency care centres in Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-hospital">🏥</div>
+          <div><div class="institution-name">Medanta — The Medicity</div><div class="institution-type">Super Specialty • Sector 38</div></div>
+        </div>
+        <div class="institution-desc">India's largest private multi-specialty hospital. 1,600+ beds, world-class cardiac, cancer, and neuro care with internationally trained specialists.</div>
+        <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">1600+ Beds</span><span class="info-pill">Cardiac | Oncology</span><span class="info-pill">+91 124-4141414</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-hospital">🏥</div>
+          <div><div class="institution-name">Fortis Memorial Research Institute</div><div class="institution-type">Super Specialty • Sector 44</div></div>
+        </div>
+        <div class="institution-desc">Premium tertiary care hospital with advanced robotic surgery, transplant programs, and internationally accredited quality of care.</div>
+        <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">Robotic Surgery</span><span class="info-pill">Transplant</span><span class="info-pill">+91 124-4962200</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-hospital">🏥</div>
+          <div><div class="institution-name">Artemis Hospital</div><div class="institution-type">Multi-Specialty • Sector 51</div></div>
+        </div>
+        <div class="institution-desc">JCI-accredited multi-specialty hospital with advanced diagnostic imaging, cardiology, orthopedics, and paediatric intensive care units.</div>
+        <div class="institution-info"><span class="info-pill">JCI Accredited</span><span class="info-pill">Cardiology</span><span class="info-pill">Paediatrics</span><span class="info-pill">+91 124-4511111</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-hospital">🏥</div>
+          <div><div class="institution-name">Max Hospital Gurugram</div><div class="institution-type">Multi-Specialty • Sector 56</div></div>
+        </div>
+        <div class="institution-desc">Comprehensive healthcare with strong oncology, neurology, and women's health departments. Known for affordable yet quality care.</div>
+        <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">Oncology</span><span class="info-pill">Women's Health</span><span class="info-pill">+91 124-2222222</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-hospital">🏥</div>
+          <div><div class="institution-name">Paras Hospital</div><div class="institution-type">Multi-Specialty • Sector 2</div></div>
+        </div>
+        <div class="institution-desc">Well-established hospital in old Gurugram with strong emergency medicine, general surgery, and maternity departments serving local communities.</div>
+        <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">Maternity</span><span class="info-pill">Surgery</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-hospital">🧬</div>
+          <div><div class="institution-name">Civil Hospital Gurugram</div><div class="institution-type">Government Hospital • Sector 10</div></div>
+        </div>
+        <div class="institution-desc">Primary government hospital offering free and subsidised healthcare. Essential services including general OPD, maternal care, and emergency.</div>
+        <div class="institution-info"><span class="info-pill">Government</span><span class="info-pill">Free OPD</span><span class="info-pill">24/7 Emergency</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCHOOLS -->
+<div id="schools" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🎓 Schools & Education</div>
+      <div class="section-subtitle">Top-rated schools, colleges, and educational institutions in Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-school">🎓</div>
+          <div><div class="institution-name">The Shri Ram School, Aravali</div><div class="institution-type">CBSE / IBDP • Sector 40</div></div>
+        </div>
+        <div class="institution-desc">One of India's most prestigious schools with CBSE and IB programs. Known for academics, sports, and holistic student development.</div>
+        <div class="institution-info"><span class="info-pill">CBSE + IBDP</span><span class="info-pill">Grades 1–12</span><span class="info-pill">Sports Complex</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-school">🎓</div>
+          <div><div class="institution-name">DPS Sector 45</div><div class="institution-type">CBSE • Sector 45</div></div>
+        </div>
+        <div class="institution-desc">Delhi Public School flagship campus in Gurugram. Excellent faculty, large campus with sports facilities, labs, and library.</div>
+        <div class="institution-info"><span class="info-pill">CBSE</span><span class="info-pill">Grades 1–12</span><span class="info-pill">Large Campus</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-school">🎓</div>
+          <div><div class="institution-name">Pathways School Gurgaon</div><div class="institution-type">IB World School • Sector 100</div></div>
+        </div>
+        <div class="institution-desc">IB World School offering PYP, MYP, and DP curricula. Modern campus with international faculty and strong university placement record.</div>
+        <div class="institution-info"><span class="info-pill">IB Curriculum</span><span class="info-pill">International</span><span class="info-pill">IBDP</span></div>
+      </div>
+      <div class="institution-card">
+        <div class="institution-header">
+          <div class="institution-icon icon-school">🎓</div>
+          <div><div class="institution-name">GD Goenka University</div><div class="institution-type">University • Sohna Road</div></div>
+        </div>
+        <div class="institution-desc">Leading private university offering engineering, management, law, design, and media programs with strong industry connections and placements.</div>
+        <div class="institution-info"><span class="info-pill">Engineering</span><span class="info-pill">Management</span><span class="info-pill">Law & Design</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEAR ME -->
+<div id="nearme">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🧭 Near Me</div>
+      <div class="section-subtitle">Find essential services closest to your current location in Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="nearme-grid reveal">
+      <div class="nearme-card"><div class="nearme-icon">🏥</div><div class="nearme-label">Hospitals</div><div class="nearme-sub">Nearest 24/7</div></div>
+      <div class="nearme-card"><div class="nearme-icon">💊</div><div class="nearme-label">Pharmacy</div><div class="nearme-sub">Open Now</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🏧</div><div class="nearme-label">ATM</div><div class="nearme-sub">All Banks</div></div>
+      <div class="nearme-card"><div class="nearme-icon">⛽</div><div class="nearme-label">Petrol Pump</div><div class="nearme-sub">Nearest</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🚇</div><div class="nearme-label">Metro Station</div><div class="nearme-sub">HUDA/Rapid</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🛒</div><div class="nearme-label">Grocery</div><div class="nearme-sub">Open Now</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🍽️</div><div class="nearme-label">Restaurant</div><div class="nearme-sub">Top Rated</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🅿️</div><div class="nearme-label">Parking</div><div class="nearme-sub">Available</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🔧</div><div class="nearme-label">Car Service</div><div class="nearme-sub">Garages</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🏦</div><div class="nearme-label">Bank</div><div class="nearme-sub">Branches</div></div>
+      <div class="nearme-card"><div class="nearme-icon">📮</div><div class="nearme-label">Post Office</div><div class="nearme-sub">Nearest</div></div>
+      <div class="nearme-card"><div class="nearme-icon">🏫</div><div class="nearme-label">School</div><div class="nearme-sub">Nearby</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- METRO -->
+<div id="metro" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🚇 Connectivity & Transit</div>
+      <div class="section-subtitle">Gurugram metro lines, bus routes, and transport connectivity</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid cards-grid-2 reveal">
+      <div class="metro-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#f59e0b;flex-shrink:0;"></div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;">Yellow Line (Delhi Metro)</div>
+            <div style="font-size:12px;opacity:0.6;">Samaypur Badli ↔ HUDA City Centre</div>
+          </div>
+        </div>
+        <div style="font-size:12px;opacity:0.7;margin-bottom:10px;">Key Gurugram stations:</div>
+        <div class="metro-stations">
+          <span class="metro-station">Sikandarpur</span>
+          <span class="metro-station">MG Road</span>
+          <span class="metro-station">IFFCO Chowk</span>
+          <span class="metro-station">Guru Dronacharya</span>
+          <span class="metro-station">Arjangarh</span>
+          <span class="metro-station">HUDA City Centre</span>
+        </div>
+      </div>
+      <div class="metro-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+          <div style="width:18px;height:18px;border-radius:50%;background:#06b6d4;flex-shrink:0;"></div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;">Rapid Metro Gurugram</div>
+            <div style="font-size:12px;opacity:0.6;">Sikandarpur ↔ Sector 56</div>
+          </div>
+        </div>
+        <div style="font-size:12px;opacity:0.7;margin-bottom:10px;">Rapid Metro stations:</div>
+        <div class="metro-stations">
+          <span class="metro-station">Sikandarpur</span>
+          <span class="metro-station">Phase 1 DLF</span>
+          <span class="metro-station">Cyber City</span>
+          <span class="metro-station">Phase 2 DLF</span>
+          <span class="metro-station">Sector 42-43</span>
+          <span class="metro-station">Sector 53-54</span>
+          <span class="metro-station">Sector 55-56</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;" class="reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name" style="font-size:15px;">🚌 Gurugram Bus Services (GMCBL)</div></div>
+        <div class="card-desc">Gurugram Metropolitan City Bus Limited operates city bus routes across Gurugram and connecting villages. Routes include Sector 29, Cyber City, Old Gurugram, Sohna Road, Farrukhnagar, and NH-48 corridor. AC and non-AC buses available.</div>
+        <div class="card-tags"><span class="tag">AC Buses</span><span class="tag">City Routes</span><span class="tag">₹10–₹60</span><span class="tag">5:30 AM – 10:30 PM</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AIRPORT -->
+<div id="airport">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">✈️ IGI Airport — Delhi</div>
+      <div class="section-subtitle">Indira Gandhi International Airport — Gurugram's primary air gateway, 12–15 km away</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid cards-grid-2 reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">Getting to IGI from Gurugram</div></div>
+        <div class="card-desc">IGI Airport is 12–20 km from most parts of Gurugram via NH-48 (Delhi-Gurugram Expressway). Multiple transport options available round the clock.</div>
+        <div class="card-tags"><span class="tag">Via NH-48</span><span class="tag">25–50 min drive</span><span class="tag">No direct metro</span></div>
+        <div style="margin-top:14px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;">🚖 Cab (Ola/Uber)</div>
+              <div style="font-size:12px;color:var(--text2);margin-top:2px;">₹300 – ₹700 depending on sector</div>
+            </div>
+            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;">🚌 Airport Express Bus</div>
+              <div style="font-size:12px;color:var(--text2);margin-top:2px;">₹90 — DIMTS Route 760</div>
+            </div>
+            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;">🚇 Delhi Metro + Cab</div>
+              <div style="font-size:12px;color:var(--text2);margin-top:2px;">Yellow Line → New Delhi → Airport Express</div>
+            </div>
+            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;">🚗 Self Drive</div>
+              <div style="font-size:12px;color:var(--text2);margin-top:2px;">NH-48 via Rajiv Chowk, P1-P5 parking</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">IGI Airport Quick Info</div></div>
+        <div class="card-tags" style="margin-bottom:12px;">
+          <span class="tag badge-blue" style="background:#dbeafe;color:#1d4ed8;">Terminal 1 — IndiGo, SpiceJet</span>
+          <span class="tag" style="background:#ede9fe;color:#5b21b6;">Terminal 2 — Charter</span>
+          <span class="tag" style="background:#d1fae5;color:#065f46;">Terminal 3 — International + Full Service</span>
+        </div>
+        <div class="card-desc">IGI is India's busiest airport with 100+ airlines operating across T1, T2, and T3. T3 handles all international flights and premium domestic carriers.</div>
+        <div style="margin-top:12px;padding:12px;background:var(--surface3);border-radius:8px;">
+          <div style="font-size:12px;font-weight:700;margin-bottom:6px;">📞 Airport Helplines</div>
+          <div style="font-size:12px;color:var(--text2);">DIAL (AAI): 0124-3376000</div>
+          <div style="font-size:12px;color:var(--text2);">Lost & Found: 011-24694285</div>
+          <div style="font-size:12px;color:var(--text2);">Flight Info: 1800-180-1407</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IT PARKS -->
+<div id="itparks" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">💻 IT Parks & Tech Hubs</div>
+      <div class="section-subtitle">Gurugram's major technology corridors — home to India's corporate and startup ecosystem</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="itpark-card">
+        <div class="itpark-name">DLF Cyber City</div>
+        <div class="itpark-sector">📍 Phase II, Sector 24–25A</div>
+        <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">India's largest planned IT hub with 30M+ sqft of office space. Home to 200+ Fortune 500 companies, Rapid Metro access, and DLF Cyber Hub.</div>
+        <div class="itpark-companies">
+          <span class="company-tag">Google</span><span class="company-tag">Microsoft</span><span class="company-tag">American Express</span><span class="company-tag">Accenture</span><span class="company-tag">Cognizant</span>
+        </div>
+        <div class="card-tags"><span class="tag">200+ MNCs</span><span class="tag">Rapid Metro</span><span class="tag">Cyber Hub</span></div>
+      </div>
+      <div class="itpark-card">
+        <div class="itpark-name">Unitech Cyber Park</div>
+        <div class="itpark-sector">📍 Sector 39</div>
+        <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">Premium Grade-A office complex with multiple towers housing leading BPO, IT services, and consulting companies across 2M sqft.</div>
+        <div class="itpark-companies">
+          <span class="company-tag">Genpact</span><span class="company-tag">EXL</span><span class="company-tag">WNS</span><span class="company-tag">Mphasis</span>
+        </div>
+        <div class="card-tags"><span class="tag">BPO Hub</span><span class="tag">Grade-A</span></div>
+      </div>
+      <div class="itpark-card">
+        <div class="itpark-name">Spaze IT Park</div>
+        <div class="itpark-sector">📍 Sector 49, Sohna Road</div>
+        <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">Modern office complex with plug-and-play infrastructure serving mid-size IT and ITES companies in the rapidly developing south Gurugram corridor.</div>
+        <div class="itpark-companies">
+          <span class="company-tag">HCL</span><span class="company-tag">Wipro BPO</span><span class="company-tag">Teleperformance</span>
+        </div>
+        <div class="card-tags"><span class="tag">Plug & Play</span><span class="tag">Sohna Road</span></div>
+      </div>
+      <div class="itpark-card">
+        <div class="itpark-name">Golf Course Road Corridor</div>
+        <div class="itpark-sector">📍 Sector 42–54, Golf Course Road</div>
+        <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">Premium office corridor housing financial services, consulting, and technology firms in luxury Grade-A buildings alongside Gurugram's best residential zones.</div>
+        <div class="itpark-companies">
+          <span class="company-tag">McKinsey</span><span class="company-tag">BCG</span><span class="company-tag">Goldman Sachs</span><span class="company-tag">Deutsche Bank</span>
+        </div>
+        <div class="card-tags"><span class="tag">BFSI Hub</span><span class="tag">Consulting</span><span class="tag">Premium</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GOVT -->
+<div id="govt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🏛️ Government Services</div>
+      <div class="section-subtitle">Key government offices, civic services, and administrative contacts in Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="card-header"><div class="card-name">MCG — Municipal Corporation</div><span class="card-badge badge-blue">Civic</span></div>
+        <div class="card-location">📍 Civic Centre, Sector 14</div>
+        <div class="card-desc">Municipal Corporation of Gurugram handles birth/death certificates, property tax, building permits, water connections, and solid waste management.</div>
+        <div class="card-tags"><span class="tag">Property Tax</span><span class="tag">Birth Certificate</span><span class="tag">Permits</span></div>
+        <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Sat)</span><a class="card-btn" href="#">Visit Portal</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">GMDA — Development Authority</div><span class="card-badge badge-green">Planning</span></div>
+        <div class="card-location">📍 Sector 44</div>
+        <div class="card-desc">Gurugram Metropolitan Development Authority oversees urban planning, infrastructure development, and zoning across the city.</div>
+        <div class="card-tags"><span class="tag">Urban Planning</span><span class="tag">Infrastructure</span><span class="tag">NOC</span></div>
+        <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Fri)</span><a class="card-btn" href="#">Visit Portal</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">DC Office Gurugram</div><span class="card-badge badge-orange">District Admin</span></div>
+        <div class="card-location">📍 Mini Secretariat, Sector 12</div>
+        <div class="card-desc">District Collector office for domicile certificates, caste certificates, income certificates, land records, and administrative grievances.</div>
+        <div class="card-tags"><span class="tag">Domicile</span><span class="tag">Land Records</span><span class="tag">Caste Certificate</span></div>
+        <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Fri)</span><a class="card-btn" href="#">Visit Portal</a></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-name">RTO Gurugram</div><span class="card-badge badge-purple">Transport</span></div>
+        <div class="card-location">📍 Sector 30</div>
+        <div class="card-desc">Regional Transport Office for vehicle registration, driving licence, RC renewal, fitness certificates, and permit-related services.</div>
+        <div class="card-tags"><span class="tag">Driving Licence</span><span class="tag">RC Renewal</span><span class="tag">Fitness Cert</span></div>
+        <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Sat)</span><a class="card-btn" href="#">Visit Portal</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAY TRIPS -->
+<div id="daytrips" class="section-wrap-alt">
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-title">🗺️ Day Trips from Gurugram</div>
+      <div class="section-subtitle">Weekend getaways and day trips within 3 hours of Gurugram</div>
+      <div class="section-underline"></div>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Damdama Lake" />
+        <div class="img-card-body">
+          <div class="img-card-name">Damdama Lake</div>
+          <div class="img-card-location">📍 Sohna • 25 km from Gurugram</div>
+          <div class="img-card-desc">Haryana's largest natural lake offering boating, rock climbing, hot air ballooning, and camping. Perfect for a quick nature escape.</div>
+          <div class="card-tags"><span class="tag">Boating</span><span class="tag">Camping</span><span class="tag">Rock Climbing</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80" alt="Neemrana Fort" />
+        <div class="img-card-body">
+          <div class="img-card-name">Neemrana Fort Palace</div>
+          <div class="img-card-location">📍 Rajasthan • 90 km from Gurugram</div>
+          <div class="img-card-desc">Magnificent 15th-century heritage hotel with zip-lining, infinity pools, and royal Rajasthani cuisine. A stunning overnight or day trip destination.</div>
+          <div class="card-tags"><span class="tag">Heritage</span><span class="tag">Zip-line</span><span class="tag">Pool</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80" alt="Sariska Tiger Reserve" />
+        <div class="img-card-body">
+          <div class="img-card-name">Sariska Tiger Reserve</div>
+          <div class="img-card-location">📍 Alwar, Rajasthan • 110 km</div>
+          <div class="img-card-desc">Wildlife reserve with Bengal tigers, leopards, and over 200 bird species. Morning and evening safaris available. Best visited Oct–June.</div>
+          <div class="card-tags"><span class="tag">Tiger Safari</span><span class="tag">Wildlife</span><span class="tag">Photography</span></div>
+        </div>
+      </div>
+      <div class="img-card">
+        <img class="img-card-img" src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400&q=80" alt="Agra Taj Mahal" />
+        <div class="img-card-body">
+          <div class="img-card-name">Agra — Taj Mahal</div>
+          <div class="img-card-location">📍 Agra, UP • 200 km (2.5 hrs Yamuna Expressway)</div>
+          <div class="img-card-desc">The world's most iconic monument — a perfect day trip via the Yamuna Expressway. Combine with Agra Fort and Fatehpur Sikri.</div>
+          <div class="card-tags"><span class="tag">UNESCO Heritage</span><span class="tag">Day Trip</span><span class="tag">Expressway</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">🏙️ Gurugram Live</div>
+  <div class="footer-desc">Your complete Gurugram city directory — restaurants, hospitals, schools, Cyber City, metro routes and everything live.</div>
+  <div class="footer-links">
+    <a class="footer-link" href="#weather">Weather</a>
+    <a class="footer-link" href="#emergency">Emergency</a>
+    <a class="footer-link" href="#malls">Malls</a>
+    <a class="footer-link" href="#hospitals">Hospitals</a>
+    <a class="footer-link" href="#itparks">IT Parks</a>
+    <a class="footer-link" href="#metro">Metro</a>
+    <a class="footer-link" href="#govt">Govt.</a>
+  </div>
+  <div class="footer-copy">© 2025 Gurugram Live. Haryana, India. All rights reserved.</div>
+</footer>
+
+<script>
+  // ── WEATHER FETCH (Open-Meteo — Gurugram coords) ──
+  const LAT = 28.4595;
+  const LON = 77.0266;
+
+  const WMO_CODES = {
+    0:'Clear Sky', 1:'Mainly Clear', 2:'Partly Cloudy', 3:'Overcast',
+    45:'Foggy', 48:'Icy Fog', 51:'Light Drizzle', 53:'Drizzle', 55:'Heavy Drizzle',
+    61:'Light Rain', 63:'Moderate Rain', 65:'Heavy Rain',
+    71:'Light Snow', 73:'Moderate Snow', 75:'Heavy Snow',
+    80:'Light Showers', 81:'Showers', 82:'Heavy Showers',
+    95:'Thunderstorm', 96:'Thunderstorm + Hail', 99:'Heavy Thunderstorm'
+  };
+  const WMO_EMOJI = {
+    0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️', 45:'🌫️', 48:'🌫️',
+    51:'🌦️', 53:'🌦️', 55:'🌧️', 61:'🌧️', 63:'🌧️', 65:'🌧️',
+    71:'🌨️', 73:'🌨️', 75:'❄️', 80:'🌦️', 81:'🌧️', 82:'⛈️',
+    95:'⛈️', 96:'⛈️', 99:'⛈️'
+  };
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  async function loadWeather() {
+    try {
+      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,precipitation&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&timezone=Asia%2FKolkata&forecast_days=14`);
+      const d = await res.json();
+      const c = d.current;
+      document.getElementById('wtemp').textContent = Math.round(c.temperature_2m);
+      document.getElementById('wdesc').textContent = WMO_CODES[c.weather_code] || 'Clear';
+      document.getElementById('wfeels').textContent = `Feels like ${Math.round(c.apparent_temperature)}°C`;
+      document.getElementById('wemoji').textContent = WMO_EMOJI[c.weather_code] || '🌤️';
+      document.getElementById('whumidity').textContent = c.relative_humidity_2m + '%';
+      document.getElementById('wwind').textContent = Math.round(c.wind_speed_10m) + ' km/h';
+      document.getElementById('wprecip').textContent = c.precipitation + ' mm';
+      // Forecast
+      const fg = document.getElementById('forecast-grid');
+      fg.innerHTML = d.daily.time.slice(0,7).map((t,i) => {
+        const date = new Date(t);
+        const dayName = i === 0 ? 'Today' : DAYS[date.getDay()];
+        const code = d.daily.weather_code[i];
+        return `<div class="forecast-day">
+          <div class="forecast-day-name">${dayName}</div>
+          <div class="forecast-day-icon">${WMO_EMOJI[code] || '🌤️'}</div>
+          <div class="forecast-day-max">${Math.round(d.daily.temperature_2m_max[i])}°</div>
+          <div class="forecast-day-min" style="color:var(--text3)">${Math.round(d.daily.temperature_2m_min[i])}°</div>
+        </div>`;
+      }).join('');
+    } catch(e) { console.error('Weather error:', e); }
+  }
+
+  async function loadAQI() {
+    try {
+      const res = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${LAT}&longitude=${LON}&current=us_aqi,pm2_5,pm10,european_aqi&timezone=Asia%2FKolkata`);
+      const d = await res.json();
+      const aqi = d.current.us_aqi;
+      let label, cls, desc;
+      if (aqi <= 50) { label='Good'; cls='aqi-good'; desc='Air quality is satisfactory.'; }
+      else if (aqi <= 100) { label='Moderate'; cls='aqi-moderate'; desc='Acceptable air quality for most people.'; }
+      else if (aqi <= 150) { label='Unhealthy for Sensitive Groups'; cls='aqi-moderate'; desc='Sensitive groups should limit outdoor exposure.'; }
+      else if (aqi <= 200) { label='Unhealthy'; cls='aqi-hazardous'; desc='Everyone may begin to experience effects.'; }
+      else if (aqi <= 300) { label='Very Unhealthy'; cls='aqi-hazardous'; desc='Health alert — limit outdoor activity.'; }
+      else { label='Hazardous'; cls='aqi-hazardous'; desc='Emergency conditions — stay indoors.'; }
+      const el = document.getElementById('aqi-val');
+      el.textContent = aqi;
+      el.className = 'aqi-value ' + cls;
+      document.getElementById('aqi-label').textContent = label;
+      document.getElementById('aqi-desc').textContent = desc;
+      document.getElementById('aqi-pm25').textContent = d.current.pm2_5?.toFixed(1) || '--';
+      document.getElementById('aqi-pm10').textContent = d.current.pm10?.toFixed(1) || '--';
+    } catch(e) { console.error('AQI error:', e); }
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── NAV ACTIVE LINK ──
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // ── EVENT FILTER BUTTONS ──
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // ── INIT ──
+  loadWeather();
+  loadAQI();
+</script>
+</body>
+</html>
