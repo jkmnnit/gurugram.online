@@ -3,29 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gurugram Live | City Directory — Restaurants, Malls, Hospitals & More</title>
-  <meta name="description" content="Your complete Gurugram city guide — restaurants, hospitals, schools, malls, cyber city, events, metro routes and everything live in Gurugram." />
+  <title>Gurugram.Online | Discover the Best of Gurugram — City Directory & Listings</title>
+  <meta name="description" content="Your premium Gurugram city guide — restaurants, hospitals, schools, malls, cyber city, events, metro routes and everything live in Gurugram." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #0f172a;
-      --accent: #06b6d4;
-      --accent2: #8b5cf6;
-      --accent3: #f59e0b;
-      --surface: #ffffff;
-      --surface2: #f8fafc;
-      --surface3: #f1f5f9;
-      --border: #e2e8f0;
-      --text: #0f172a;
-      --text2: #475569;
-      --text3: #94a3b8;
-      --hero-from: #0f2027;
-      --hero-to: #203a43;
-      --hero-mid: #2c5364;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
-      --card-hover: 0 8px 32px rgba(0,0,0,0.12);
+      --bg: #0A0F1E;
+      --bg2: #0D0D0D;
+      --accent: #D4A853;
+      --accent2: #00C9B1;
+      --surface: #1A1A2E;
+      --surface2: #111128;
+      --surface3: #141414;
+      --border: rgba(212,168,83,0.15);
+      --border2: rgba(255,255,255,0.06);
+      --text: #F5F5F5;
+      --text2: #9A9A9A;
+      --text3: #5A5A6A;
+      --gold-glow: rgba(212,168,83,0.25);
+      --cyan-glow: rgba(0,201,177,0.2);
+      --card-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+      --card-hover: 0 8px 40px rgba(212,168,83,0.15), 0 4px 20px rgba(0,0,0,0.5);
+      --glass: rgba(26,26,46,0.6);
+      --glass-border: rgba(255,255,255,0.08);
       --radius: 16px;
       --radius-sm: 10px;
     }
@@ -33,7 +35,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--surface);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
@@ -42,9 +44,9 @@
     /* ── NAVBAR ── */
     .navbar {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(10,15,30,0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border2);
       padding: 0 20px;
     }
     .nav-top {
@@ -54,24 +56,24 @@
     .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-brand-icon {
       width: 40px; height: 40px; border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      background: linear-gradient(135deg, var(--accent), #b8862d);
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
+      font-size: 20px; box-shadow: 0 0 20px var(--gold-glow);
     }
     .nav-brand-text { line-height: 1.1; }
-    .nav-brand-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; color: var(--primary); }
-    .nav-brand-sub { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-brand-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--accent); }
+    .nav-brand-sub { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase; }
     .nav-near-me {
       display: flex; align-items: center; gap: 6px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: white; border: none; border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent), #b8862d);
+      color: #0A0F1E; border: none; border-radius: 50px;
       padding: 9px 18px; font-size: 13px; font-weight: 600;
       cursor: pointer; font-family: 'DM Sans', sans-serif;
-      transition: all 0.2s; text-decoration: none;
+      transition: all 0.3s; text-decoration: none;
     }
-    .nav-near-me:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(6,182,212,0.35); }
+    .nav-near-me:hover { transform: translateY(-1px); box-shadow: 0 6px 25px var(--gold-glow); }
     .nav-links {
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border2);
       overflow-x: auto; padding: 8px 0;
       display: flex; gap: 4px; max-width: 1200px; margin: 0 auto;
       scrollbar-width: none;
@@ -80,55 +82,67 @@
     .nav-link {
       display: flex; align-items: center; gap: 5px; white-space: nowrap;
       padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: 500;
-      color: var(--text2); text-decoration: none; transition: all 0.15s;
+      color: var(--text2); text-decoration: none; transition: all 0.2s;
     }
-    .nav-link:hover, .nav-link.active {
-      background: var(--surface3); color: var(--primary);
-    }
-    .nav-link.active { background: linear-gradient(135deg,#e0f7fa,#ede9fe); color: var(--accent2); }
+    .nav-link:hover { background: rgba(212,168,83,0.1); color: var(--accent); }
+    .nav-link.active { background: rgba(212,168,83,0.12); color: var(--accent); }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--hero-from), var(--hero-mid), var(--hero-to));
-      padding: 70px 20px 60px;
+      background: var(--bg);
+      padding: 80px 20px 70px;
       text-align: center;
       position: relative; overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(6,182,212,0.15) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 20%, rgba(139,92,246,0.12) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 30% 60%, rgba(212,168,83,0.08) 0%, transparent 55%),
+                  radial-gradient(ellipse at 70% 20%, rgba(0,201,177,0.06) 0%, transparent 50%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%231A1A2E' fill-opacity='0.3' d='M0,200 L0,120 L40,120 L40,80 L60,80 L60,100 L100,100 L100,60 L120,60 L120,90 L160,90 L160,50 L180,50 L180,70 L200,70 L200,110 L240,110 L240,40 L280,40 L280,70 L320,70 L320,90 L360,90 L360,30 L380,30 L380,60 L420,60 L420,100 L460,100 L460,45 L500,45 L500,80 L540,80 L540,55 L580,55 L580,95 L620,95 L620,35 L660,35 L660,75 L700,75 L700,50 L740,50 L740,85 L780,85 L780,25 L800,25 L800,65 L840,65 L840,105 L880,105 L880,40 L920,40 L920,70 L960,70 L960,55 L1000,55 L1000,90 L1040,90 L1040,35 L1060,35 L1060,75 L1100,75 L1100,60 L1140,60 L1140,95 L1180,95 L1180,45 L1220,45 L1220,80 L1260,80 L1260,50 L1300,50 L1300,110 L1340,110 L1340,30 L1380,30 L1380,70 L1440,70 L1440,200 Z'/%3E%3C/svg%3E") center bottom / cover no-repeat;
+      opacity: 0.5;
+      pointer-events: none;
     }
     .hero-state {
-      font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 16px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.2em;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
       position: relative;
     }
     .hero-title {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: clamp(40px, 7vw, 72px);
-      color: white; margin-bottom: 16px; position: relative;
+      font-family: 'Playfair Display', serif; font-weight: 800;
+      font-size: clamp(36px, 7vw, 68px);
+      color: var(--text); margin-bottom: 16px; position: relative;
       display: flex; align-items: center; justify-content: center; gap: 16px;
     }
+    .hero-title-accent { color: var(--accent); }
     .hero-subtitle {
       font-size: clamp(15px, 2.5vw, 18px);
-      color: rgba(255,255,255,0.65); max-width: 600px;
+      color: var(--text2); max-width: 600px;
       margin: 0 auto 36px; position: relative; line-height: 1.7;
     }
     .hero-search-wrap { position: relative; max-width: 600px; margin: 0 auto 40px; }
     .hero-search {
       width: 100%; padding: 16px 24px 16px 50px;
-      border-radius: 50px; border: none;
+      border-radius: 50px;
+      border: 1.5px solid var(--border);
       font-size: 15px; font-family: 'DM Sans', sans-serif;
-      background: rgba(255,255,255,0.97);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      background: var(--surface);
+      box-shadow: 0 0 30px var(--gold-glow), 0 8px 32px rgba(0,0,0,0.4);
       outline: none; color: var(--text);
+      transition: all 0.3s;
+    }
+    .hero-search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 40px var(--gold-glow), 0 0 60px rgba(212,168,83,0.1), 0 8px 32px rgba(0,0,0,0.4);
     }
     .hero-search::placeholder { color: var(--text3); }
     .hero-search-icon {
       position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
-      color: var(--text3); font-size: 16px;
+      color: var(--accent); font-size: 16px;
     }
     .hero-chips {
       display: flex; flex-wrap: wrap; gap: 10px;
@@ -136,29 +150,31 @@
     }
     .hero-chip {
       display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      color: rgba(255,255,255,0.85);
+      background: rgba(26,26,46,0.6);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      color: var(--text2);
       padding: 7px 14px; border-radius: 50px;
       font-size: 13px; font-weight: 500;
-      cursor: pointer; transition: all 0.2s; text-decoration: none;
+      cursor: pointer; transition: all 0.3s; text-decoration: none;
     }
     .hero-chip:hover {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.3);
-      transform: translateY(-1px);
+      background: rgba(212,168,83,0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--gold-glow);
     }
 
     /* ── SECTIONS ── */
     .section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-    .section-alt { background: var(--surface2); }
+    .section-alt { background: var(--bg2); }
     .section-alt .section { background: transparent; }
     .section-header { margin-bottom: 32px; }
     .section-icon { font-size: 28px; margin-bottom: 8px; display: block; }
     .section-title {
-      font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: clamp(22px, 3.5vw, 30px); color: var(--primary); margin-bottom: 6px;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(22px, 3.5vw, 30px); color: var(--text); margin-bottom: 6px;
       display: flex; align-items: center; gap: 10px;
     }
     .section-subtitle { color: var(--text2); font-size: 15px; }
@@ -172,25 +188,27 @@
     .weather-grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
     @media (max-width: 768px) { .weather-grid { grid-template-columns: 1fr; } }
     .weather-main {
-      background: linear-gradient(135deg, #0f2027, #2c5364);
+      background: linear-gradient(135deg, #0A0F1E, #1A1A2E);
+      border: 1px solid var(--border);
       border-radius: var(--radius); padding: 30px;
       color: white; position: relative; overflow: hidden;
     }
     .weather-main::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at top right, rgba(6,182,212,0.2), transparent 60%);
+      background: radial-gradient(ellipse at top right, var(--gold-glow), transparent 60%);
     }
-    .weather-city { font-size: 13px; font-weight: 500; opacity: 0.6; margin-bottom: 4px; }
+    .weather-city { font-size: 13px; font-weight: 500; color: var(--accent); margin-bottom: 4px; }
     .weather-temp-row { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 4px; }
-    .weather-temp { font-family: 'Syne', sans-serif; font-size: 72px; font-weight: 700; line-height: 1; }
+    .weather-temp { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 700; line-height: 1; }
     .weather-unit { font-size: 28px; opacity: 0.5; margin-top: 12px; }
     .weather-emoji { font-size: 60px; margin-left: auto; }
     .weather-desc { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
     .weather-feels { font-size: 13px; opacity: 0.6; margin-bottom: 20px; }
     .weather-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .weather-stat {
-      background: rgba(255,255,255,0.1); border-radius: 10px;
+      background: rgba(255,255,255,0.05); border-radius: 10px;
       padding: 12px; text-align: center;
+      border: 1px solid var(--border2);
     }
     .weather-stat-icon { font-size: 18px; margin-bottom: 4px; }
     .weather-stat-label { font-size: 11px; opacity: 0.6; }
@@ -200,29 +218,29 @@
       border-radius: var(--radius); padding: 24px;
       box-shadow: var(--card-shadow);
     }
-    .aqi-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 16px; }
+    .aqi-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text2); text-transform: uppercase; margin-bottom: 16px; }
     .aqi-value {
-      font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800;
+      font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 800;
       line-height: 1; margin-bottom: 6px;
     }
     .aqi-label { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
     .aqi-desc { font-size: 12px; color: var(--text2); margin-bottom: 16px; }
     .aqi-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .aqi-metric { background: var(--surface3); border-radius: 8px; padding: 10px; }
+    .aqi-metric { background: rgba(255,255,255,0.03); border: 1px solid var(--border2); border-radius: 8px; padding: 10px; }
     .aqi-metric-val { font-weight: 700; font-size: 16px; }
     .aqi-metric-label { font-size: 11px; color: var(--text3); }
     .aqi-hazardous { color: #dc2626; }
     .aqi-moderate { color: #f59e0b; }
     .aqi-good { color: #10b981; }
     .forecast-section { margin-top: 20px; }
-    .forecast-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text3); text-transform: uppercase; margin-bottom: 12px; }
+    .forecast-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
     .forecast-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
     @media (max-width: 600px) { .forecast-grid { grid-template-columns: repeat(4, 1fr); } }
     .forecast-day {
-      background: var(--surface3); border-radius: 10px;
+      background: var(--surface); border: 1px solid var(--border2); border-radius: 10px;
       padding: 10px 6px; text-align: center;
     }
-    .forecast-day-name { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 4px; }
+    .forecast-day-name { font-size: 11px; font-weight: 600; color: var(--text2); margin-bottom: 4px; }
     .forecast-day-icon { font-size: 20px; margin-bottom: 4px; }
     .forecast-day-max { font-size: 13px; font-weight: 700; }
     .forecast-day-min { font-size: 11px; color: var(--text3); }
@@ -231,34 +249,41 @@
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
     .cards-grid-2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
     .card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px) saturate(150%);
       border-radius: var(--radius); padding: 20px;
-      box-shadow: var(--card-shadow); transition: all 0.2s;
+      box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .card:hover {
+      box-shadow: var(--card-hover);
+      transform: translateY(-4px);
+      border-color: rgba(212,168,83,0.25);
+    }
     .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
-    .card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; }
+    .card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--text); }
     .card-badge {
       font-size: 11px; font-weight: 600; padding: 3px 8px;
       border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-left: 8px;
     }
-    .badge-blue { background: #dbeafe; color: #1d4ed8; }
-    .badge-green { background: #d1fae5; color: #065f46; }
-    .badge-orange { background: #fef3c7; color: #92400e; }
-    .badge-purple { background: #ede9fe; color: #5b21b6; }
-    .badge-red { background: #fee2e2; color: #991b1b; }
-    .badge-teal { background: #ccfbf1; color: #134e4a; }
-    .card-location { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text3); margin-bottom: 10px; }
+    .badge-blue { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+    .badge-green { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-orange { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
+    .badge-purple { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); }
+    .badge-red { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+    .badge-teal { background: rgba(0,201,177,0.15); color: var(--accent2); border: 1px solid rgba(0,201,177,0.2); }
+    .badge-gold { background: rgba(212,168,83,0.15); color: var(--accent); border: 1px solid rgba(212,168,83,0.3); }
+    .card-location { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text2); margin-bottom: 10px; }
     .card-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
-    .stars { color: #f59e0b; font-size: 13px; }
-    .rating-val { font-size: 13px; font-weight: 700; }
+    .stars { color: var(--accent); font-size: 13px; }
+    .rating-val { font-size: 13px; font-weight: 700; color: var(--text); }
     .price { font-size: 13px; color: var(--accent2); font-weight: 600; margin-left: 8px; }
     .card-desc { font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 12px; }
     .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .tag {
       font-size: 11px; font-weight: 500;
       padding: 3px 8px; border-radius: 20px;
-      background: var(--surface3); color: var(--text2);
+      background: rgba(255,255,255,0.05); color: var(--text2);
+      border: 1px solid var(--border2);
     }
     .card-footer { display: flex; align-items: center; justify-content: space-between; }
     .card-time { font-size: 12px; color: var(--text3); }
@@ -266,32 +291,34 @@
       font-size: 12px; font-weight: 600; padding: 6px 14px;
       border-radius: 20px; border: 1.5px solid var(--accent);
       color: var(--accent); background: transparent;
-      cursor: pointer; transition: all 0.15s; text-decoration: none;
+      cursor: pointer; transition: all 0.3s; text-decoration: none;
     }
-    .card-btn:hover { background: var(--accent); color: white; }
+    .card-btn:hover { background: var(--accent); color: #0A0F1E; box-shadow: 0 0 15px var(--gold-glow); }
 
     /* ── NEWS CARDS ── */
     .news-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px) saturate(150%);
       border-radius: var(--radius); padding: 22px;
-      box-shadow: var(--card-shadow); transition: all 0.2s;
+      box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .news-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
-    .news-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-    .news-external { font-size: 12px; color: var(--text3); }
+    .news-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); }
+    .news-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+    .news-external { font-size: 12px; color: var(--accent); }
     .news-desc { font-size: 13px; color: var(--text2); margin-bottom: 14px; line-height: 1.5; }
     .news-footer { display: flex; align-items: center; justify-content: space-between; }
-    .news-tag { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: #dbeafe; color: #1d4ed8; }
+    .news-tag { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
     .news-lang { font-size: 12px; color: var(--text3); }
 
     /* ── EMERGENCY ── */
     .emergency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
     .emergency-card {
       border-radius: var(--radius-sm); padding: 18px;
-      border: 1px solid var(--border); background: var(--surface);
-      transition: all 0.2s; cursor: pointer;
+      border: 1px solid var(--glass-border); background: var(--glass);
+      backdrop-filter: blur(12px);
+      transition: all 0.35s; cursor: pointer;
     }
-    .emergency-card:hover { transform: translateY(-2px); box-shadow: var(--card-hover); }
+    .emergency-card:hover { transform: translateY(-3px); box-shadow: var(--card-hover); border-color: rgba(212,168,83,0.2); }
     .emergency-card.police { border-left: 4px solid #3b82f6; }
     .emergency-card.medical { border-left: 4px solid #ef4444; }
     .emergency-card.fire { border-left: 4px solid #f97316; }
@@ -299,9 +326,9 @@
     .emergency-card.women { border-left: 4px solid #ec4899; }
     .emergency-card.child { border-left: 4px solid #06b6d4; }
     .emergency-icon { font-size: 22px; margin-bottom: 8px; }
-    .emergency-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+    .emergency-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--text); }
     .emergency-desc { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
-    .emergency-number { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--primary); }
+    .emergency-number { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: var(--accent); }
 
     /* ── EVENT CARD ── */
     .event-featured {
@@ -311,6 +338,7 @@
     .event-img-card {
       border-radius: var(--radius); overflow: hidden;
       position: relative; box-shadow: var(--card-shadow);
+      border: 1px solid var(--glass-border);
     }
     .event-img {
       width: 100%; height: 240px; object-fit: cover; display: block;
@@ -325,134 +353,181 @@
       position: absolute; top: 12px; left: 12px;
       display: flex; gap: 6px;
     }
-    .badge-featured { background: #f59e0b; color: #000; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+    .badge-featured { background: var(--accent); color: #0A0F1E; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
     .badge-category { background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); color: white; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
-    .event-img-title { color: white; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
+    .event-img-title { color: white; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; }
     .event-img-meta { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 4px; }
     .event-detail-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px);
       border-radius: var(--radius); padding: 24px; box-shadow: var(--card-shadow);
     }
-    .event-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: #ede9fe; color: #5b21b6; margin-bottom: 10px; }
-    .event-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 8px; }
+    .event-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); margin-bottom: 10px; }
+    .event-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: var(--text); }
     .event-meta { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
     .event-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-top: 10px; }
     .event-filters { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
     .filter-btn {
       padding: 7px 16px; border-radius: 50px; border: 1.5px solid var(--border);
       background: transparent; font-size: 13px; font-weight: 500; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; transition: all 0.15s; color: var(--text2);
+      font-family: 'DM Sans', sans-serif; transition: all 0.3s; color: var(--text2);
     }
-    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .filter-btn.active { background: var(--accent); color: #0A0F1E; border-color: var(--accent); }
     .filter-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
 
     /* ── MALL / PLACE CARDS WITH IMAGE ── */
     .img-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px) saturate(150%);
       border-radius: var(--radius); overflow: hidden;
-      box-shadow: var(--card-shadow); transition: all 0.2s;
+      box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .img-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .img-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); }
     .img-card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
     .img-card-body { padding: 16px; }
-    .img-card-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
-    .img-card-location { font-size: 12px; color: var(--text3); margin-bottom: 8px; }
+    .img-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--text); }
+    .img-card-location { font-size: 12px; color: var(--text2); margin-bottom: 8px; }
     .img-card-desc { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
 
     /* ── HELPLINE NUMBERS HIGHLIGHT ── */
     .helpline-banner {
-      background: linear-gradient(135deg, #0f2027, #2c5364);
+      background: linear-gradient(135deg, #0A0F1E, var(--surface));
+      border: 1px solid var(--border);
       border-radius: var(--radius); padding: 30px;
       text-align: center; margin-top: 20px;
     }
-    .helpline-banner p { color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 12px; }
+    .helpline-banner p { color: var(--text2); font-size: 13px; margin-top: 12px; }
+    .helpline-banner p.helpline-cta { color: var(--accent); font-size: 14px; }
 
     /* ── METRO SECTION ── */
     .metro-card {
-      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      background: linear-gradient(135deg, #0A0F1E, #1A1A2E);
+      border: 1px solid var(--border);
       border-radius: var(--radius); padding: 24px; color: white;
     }
     .metro-line { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .metro-line-color {
       width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
     }
-    .metro-line-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+    .metro-line-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; }
     .metro-line-detail { font-size: 12px; opacity: 0.6; }
     .metro-stations { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
     .metro-station {
       font-size: 11px; padding: 3px 8px; border-radius: 4px;
-      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     /* ── FOOTER ── */
     .footer {
-      background: var(--primary); color: rgba(255,255,255,0.6);
-      padding: 40px 20px; text-align: center; margin-top: 0;
+      background: #060810; color: var(--text2);
+      padding: 50px 20px 40px; text-align: center; margin-top: 0;
+      border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
     }
-    .footer-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px; color: white; margin-bottom: 8px; }
-    .footer-desc { font-size: 14px; max-width: 400px; margin: 0 auto 20px; }
-    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-    .footer-link { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: color 0.15s; }
+    .footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(212,168,83,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,168,83,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .footer-brand { font-family: 'Playfair Display', serif; font-weight: 800; font-size: 24px; color: var(--accent); margin-bottom: 8px; position: relative; }
+    .footer-desc { font-size: 14px; max-width: 400px; margin: 0 auto 20px; position: relative; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; position: relative; }
+    .footer-link { color: var(--text3); text-decoration: none; font-size: 13px; transition: color 0.3s; }
     .footer-link:hover { color: var(--accent); }
-    .footer-copy { font-size: 12px; opacity: 0.4; }
+    .footer-copy { font-size: 12px; color: var(--text3); opacity: 0.6; position: relative; }
 
     /* ── HOSPITAL / SCHOOL CARD ── */
     .institution-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px) saturate(150%);
       border-radius: var(--radius); padding: 20px;
-      box-shadow: var(--card-shadow); transition: all 0.2s;
+      box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .institution-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
+    .institution-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); }
     .institution-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
     .institution-icon {
       width: 44px; height: 44px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 22px; flex-shrink: 0;
     }
-    .icon-hospital { background: #fee2e2; }
-    .icon-school { background: #dbeafe; }
-    .icon-park { background: #d1fae5; }
-    .institution-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
-    .institution-type { font-size: 11px; color: var(--text3); }
+    .icon-hospital { background: rgba(239,68,68,0.15); }
+    .icon-school { background: rgba(59,130,246,0.15); }
+    .icon-park { background: rgba(16,185,129,0.15); }
+    .institution-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--text); }
+    .institution-type { font-size: 11px; color: var(--text2); }
     .institution-desc { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
     .institution-info { display: flex; flex-wrap: wrap; gap: 8px; }
-    .info-pill { font-size: 11px; padding: 3px 8px; border-radius: 20px; background: var(--surface3); color: var(--text2); }
+    .info-pill { font-size: 11px; padding: 3px 8px; border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--text2); border: 1px solid var(--border2); }
 
     /* ── IT PARK ── */
     .itpark-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px) saturate(150%);
       border-radius: var(--radius); padding: 22px;
-      box-shadow: var(--card-shadow); transition: all 0.2s;
+      box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       border-top: 3px solid var(--accent);
     }
-    .itpark-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); }
-    .itpark-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 4px; }
-    .itpark-sector { font-size: 12px; color: var(--text3); margin-bottom: 10px; }
+    .itpark-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); border-top-color: var(--accent); }
+    .itpark-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; margin-bottom: 4px; color: var(--text); }
+    .itpark-sector { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
     .itpark-companies { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-    .company-tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--surface3); font-weight: 500; }
+    .company-tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: rgba(212,168,83,0.1); color: var(--accent); font-weight: 500; border: 1px solid rgba(212,168,83,0.15); }
 
     /* ── NEAR ME ── */
     .nearme-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
     .nearme-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px);
       border-radius: var(--radius-sm); padding: 18px;
       text-align: center; box-shadow: var(--card-shadow);
-      transition: all 0.2s; cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: pointer;
     }
-    .nearme-card:hover { box-shadow: var(--card-hover); transform: translateY(-2px); border-color: var(--accent); }
+    .nearme-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: var(--accent); }
     .nearme-icon { font-size: 28px; margin-bottom: 8px; }
-    .nearme-label { font-size: 13px; font-weight: 600; color: var(--primary); }
-    .nearme-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+    .nearme-label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearme-sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
 
     /* SECTION DIVIDER */
-    .section-wrap-alt { background: var(--surface2); }
+    .section-wrap-alt { background: var(--bg2); }
 
     /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0; transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── PREMIUM GLOW ANIMATION ── */
+    @keyframes subtle-glow {
+      0%, 100% { box-shadow: 0 0 20px var(--gold-glow); }
+      50% { box-shadow: 0 0 35px var(--gold-glow), 0 0 60px rgba(212,168,83,0.08); }
+    }
+    .hero-search-wrap::after {
+      content: '';
+      position: absolute; inset: -2px;
+      border-radius: 52px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent));
+      background-size: 200% 200%;
+      animation: gradient-rotate 4s ease infinite;
+      opacity: 0.15;
+      z-index: -1;
+    }
+    @keyframes gradient-rotate {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
 
     @media (max-width: 640px) {
       .hero { padding: 50px 16px 40px; }
@@ -468,10 +543,10 @@
 <nav class="navbar">
   <div class="nav-top">
     <a class="nav-brand" href="#">
-      <div class="nav-brand-icon">🏙️</div>
+      <div class="nav-brand-icon">✦</div>
       <div class="nav-brand-text">
         <div class="nav-brand-name">Gurugram</div>
-        <div class="nav-brand-sub">City Directory</div>
+        <div class="nav-brand-sub">Premium City Directory</div>
       </div>
     </a>
     <a class="nav-near-me" href="#nearme">🧭 Near Me</a>
@@ -504,9 +579,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-state">Haryana, India</div>
-  <h1 class="hero-title">🏙️ Gurugram Live</h1>
-  <p class="hero-subtitle">Your complete city directory — restaurants, hospitals, schools, Cyber City, metro routes and everything live in Gurugram.</p>
+  <div class="hero-state">&#10022; Haryana, India</div>
+  <h1 class="hero-title">Discover the Best of <span class="hero-title-accent">Gurugram</span></h1>
+  <p class="hero-subtitle">Your premium city concierge — restaurants, hospitals, schools, Cyber City, metro routes and everything live in India's most corporate city.</p>
   <div class="hero-search-wrap">
     <span class="hero-search-icon">🔍</span>
     <input class="hero-search" type="text" placeholder="Search Gurugram — restaurants, hospitals, metro, events..." />
@@ -578,7 +653,7 @@
             </div>
           </div>
         </div>
-        <div class="forecast-section" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:16px;box-shadow:var(--card-shadow);">
+        <div class="forecast-section" style="background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:20px;margin-top:16px;box-shadow:var(--card-shadow);">
           <div class="forecast-title">📅 14-Day Forecast</div>
           <div class="forecast-grid" id="forecast-grid">
             <div class="forecast-day"><div class="forecast-day-name">---</div><div class="forecast-day-icon">--</div><div class="forecast-day-max">--°</div><div class="forecast-day-min">--°</div></div>
@@ -627,22 +702,22 @@
       <div class="news-card">
         <div class="news-card-name">Navbharat Times – Gurgaon <span class="news-external">↗</span></div>
         <div class="news-desc">Hindi-language daily covering hyperlocal stories, civic grievances, and community news across Gurugram and Faridabad.</div>
-        <div class="news-footer"><span class="news-tag" style="background:#fef3c7;color:#92400e;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
       </div>
       <div class="news-card">
         <div class="news-card-name">Gurugram Metro – Local News <span class="news-external">↗</span></div>
         <div class="news-desc">Dedicated hyperlocal news portal covering sector-wise updates, traffic, construction, RWA issues, and resident welfare 24/7.</div>
-        <div class="news-footer"><span class="news-tag" style="background:#d1fae5;color:#065f46;">Hyperlocal</span><span class="news-lang">Hindi/English</span></div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(16,185,129,0.15);color:#34d399;">Hyperlocal</span><span class="news-lang">Hindi/English</span></div>
       </div>
       <div class="news-card">
         <div class="news-card-name">India Today – Haryana <span class="news-external">↗</span></div>
         <div class="news-desc">National news magazine's dedicated Haryana coverage with feature stories, interviews, and investigative reports on urban development.</div>
-        <div class="news-footer"><span class="news-tag" style="background:#ede9fe;color:#5b21b6;">News Magazine</span><span class="news-lang">English</span></div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(139,92,246,0.15);color:#a78bfa;">News Magazine</span><span class="news-lang">English</span></div>
       </div>
       <div class="news-card">
         <div class="news-card-name">The Print – Haryana/NCR <span class="news-external">↗</span></div>
         <div class="news-desc">Independent journalism covering policy, governance, and accountability in Haryana with significant Gurugram and NCR coverage.</div>
-        <div class="news-footer"><span class="news-tag" style="background:#fee2e2;color:#991b1b;">Independent</span><span class="news-lang">English</span></div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(239,68,68,0.15);color:#f87171;">Independent</span><span class="news-lang">English</span></div>
       </div>
     </div>
   </div>
@@ -731,7 +806,7 @@
       </div>
     </div>
     <div class="helpline-banner">
-      <p style="color:rgba(255,255,255,0.8);font-size:14px;">Save these numbers in your phone. Tap any number to call directly.</p>
+      <p style="color:var(--accent);font-size:14px;">Save these numbers in your phone. Tap any number to call directly.</p>
     </div>
   </div>
 </div>
@@ -1172,7 +1247,7 @@
     <div class="cards-grid reveal">
       <div class="institution-card">
         <div class="institution-header">
-          <div class="institution-icon" style="background:#fef3c7;">🛕</div>
+          <div class="institution-icon" style="background:rgba(245,158,11,0.15);">🛕</div>
           <div><div class="institution-name">Sheetla Mata Mandir</div><div class="institution-type">Ancient Temple • Old Gurugram</div></div>
         </div>
         <div class="institution-desc">Most revered temple in Gurugram. Devoted to Goddess Sheetla Mata, it attracts lakhs of devotees during Navratri and Ashtami.</div>
@@ -1180,7 +1255,7 @@
       </div>
       <div class="institution-card">
         <div class="institution-header">
-          <div class="institution-icon" style="background:#ede9fe;">🕌</div>
+          <div class="institution-icon" style="background:rgba(139,92,246,0.15);">🕌</div>
           <div><div class="institution-name">Dargah of Shah Chokha</div><div class="institution-type">Sufi Shrine • Sector 18</div></div>
         </div>
         <div class="institution-desc">Centuries-old Sufi dargah known for its spiritual atmosphere. Visited by people of all faiths, especially during Urs celebrations.</div>
@@ -1188,7 +1263,7 @@
       </div>
       <div class="institution-card">
         <div class="institution-header">
-          <div class="institution-icon" style="background:#dbeafe;">⛪</div>
+          <div class="institution-icon" style="background:rgba(59,130,246,0.15);">⛪</div>
           <div><div class="institution-name">Gurudwara Sector 46</div><div class="institution-type">Sikh Gurudwara • Sector 46</div></div>
         </div>
         <div class="institution-desc">Prominent Sikh Gurudwara serving langars (community meals) and regular kirtan. Active centre for community welfare and festivals.</div>
@@ -1196,7 +1271,7 @@
       </div>
       <div class="institution-card">
         <div class="institution-header">
-          <div class="institution-icon" style="background:#fef3c7;">🛕</div>
+          <div class="institution-icon" style="background:rgba(245,158,11,0.15);">🛕</div>
           <div><div class="institution-name">Pracheen Hanuman Mandir</div><div class="institution-type">Ancient Temple • Sector 57</div></div>
         </div>
         <div class="institution-desc">Ancient Hanuman temple with large number of devotees on Tuesdays and Saturdays. Known for its peaceful garden premises.</div>
@@ -1416,9 +1491,9 @@
     <div class="cards-grid cards-grid-2 reveal">
       <div class="metro-card">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-          <div style="width:18px;height:18px;border-radius:50%;background:#f59e0b;flex-shrink:0;"></div>
+          <div style="width:18px;height:18px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
           <div>
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;">Yellow Line (Delhi Metro)</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;">Yellow Line (Delhi Metro)</div>
             <div style="font-size:12px;opacity:0.6;">Samaypur Badli ↔ HUDA City Centre</div>
           </div>
         </div>
@@ -1434,9 +1509,9 @@
       </div>
       <div class="metro-card">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-          <div style="width:18px;height:18px;border-radius:50%;background:#06b6d4;flex-shrink:0;"></div>
+          <div style="width:18px;height:18px;border-radius:50%;background:var(--accent2);flex-shrink:0;"></div>
           <div>
-            <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:16px;">Rapid Metro Gurugram</div>
+            <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:16px;">Rapid Metro Gurugram</div>
             <div style="font-size:12px;opacity:0.6;">Sikandarpur ↔ Sector 56</div>
           </div>
         </div>
@@ -1477,20 +1552,20 @@
         <div class="card-tags"><span class="tag">Via NH-48</span><span class="tag">25–50 min drive</span><span class="tag">No direct metro</span></div>
         <div style="margin-top:14px;">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
-              <div style="font-weight:700;font-size:13px;">🚖 Cab (Ola/Uber)</div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;color:var(--text);">🚖 Cab (Ola/Uber)</div>
               <div style="font-size:12px;color:var(--text2);margin-top:2px;">₹300 – ₹700 depending on sector</div>
             </div>
-            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
-              <div style="font-weight:700;font-size:13px;">🚌 Airport Express Bus</div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;color:var(--text);">🚌 Airport Express Bus</div>
               <div style="font-size:12px;color:var(--text2);margin-top:2px;">₹90 — DIMTS Route 760</div>
             </div>
-            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
-              <div style="font-weight:700;font-size:13px;">🚇 Delhi Metro + Cab</div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;color:var(--text);">🚇 Delhi Metro + Cab</div>
               <div style="font-size:12px;color:var(--text2);margin-top:2px;">Yellow Line → New Delhi → Airport Express</div>
             </div>
-            <div style="background:var(--surface3);border-radius:8px;padding:12px;">
-              <div style="font-weight:700;font-size:13px;">🚗 Self Drive</div>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;padding:12px;">
+              <div style="font-weight:700;font-size:13px;color:var(--text);">🚗 Self Drive</div>
               <div style="font-size:12px;color:var(--text2);margin-top:2px;">NH-48 via Rajiv Chowk, P1-P5 parking</div>
             </div>
           </div>
@@ -1499,13 +1574,13 @@
       <div class="card">
         <div class="card-header"><div class="card-name">IGI Airport Quick Info</div></div>
         <div class="card-tags" style="margin-bottom:12px;">
-          <span class="tag badge-blue" style="background:#dbeafe;color:#1d4ed8;">Terminal 1 — IndiGo, SpiceJet</span>
-          <span class="tag" style="background:#ede9fe;color:#5b21b6;">Terminal 2 — Charter</span>
-          <span class="tag" style="background:#d1fae5;color:#065f46;">Terminal 3 — International + Full Service</span>
+          <span class="tag badge-blue" style="background:rgba(59,130,246,0.15);color:#60a5fa;border:1px solid rgba(59,130,246,0.2);">Terminal 1 — IndiGo, SpiceJet</span>
+          <span class="tag" style="background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.2);">Terminal 2 — Charter</span>
+          <span class="tag" style="background:rgba(16,185,129,0.15);color:#34d399;border:1px solid rgba(16,185,129,0.2);">Terminal 3 — International + Full Service</span>
         </div>
         <div class="card-desc">IGI is India's busiest airport with 100+ airlines operating across T1, T2, and T3. T3 handles all international flights and premium domestic carriers.</div>
-        <div style="margin-top:12px;padding:12px;background:var(--surface3);border-radius:8px;">
-          <div style="font-size:12px;font-weight:700;margin-bottom:6px;">📞 Airport Helplines</div>
+        <div style="margin-top:12px;padding:12px;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:8px;">
+          <div style="font-size:12px;font-weight:700;margin-bottom:6px;color:var(--accent);">📞 Airport Helplines</div>
           <div style="font-size:12px;color:var(--text2);">DIAL (AAI): 0124-3376000</div>
           <div style="font-size:12px;color:var(--text2);">Lost & Found: 011-24694285</div>
           <div style="font-size:12px;color:var(--text2);">Flight Info: 1800-180-1407</div>
@@ -1656,8 +1731,8 @@
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-brand">🏙️ Gurugram Live</div>
-  <div class="footer-desc">Your complete Gurugram city directory — restaurants, hospitals, schools, Cyber City, metro routes and everything live.</div>
+  <div class="footer-brand">✦ Gurugram.Online</div>
+  <div class="footer-desc">Your premium city concierge — restaurants, hospitals, schools, Cyber City, metro routes and everything live in Gurugram.</div>
   <div class="footer-links">
     <a class="footer-link" href="#weather">Weather</a>
     <a class="footer-link" href="#emergency">Emergency</a>
