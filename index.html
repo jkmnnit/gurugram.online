@@ -258,6 +258,7 @@
       box-shadow: var(--card-hover);
       transform: translateY(-4px);
       border-color: rgba(212,168,83,0.25);
+      cursor: pointer;
     }
     .card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
     .card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--text); }
@@ -273,6 +274,8 @@
     .badge-teal { background: rgba(0,201,177,0.15); color: var(--accent2); border: 1px solid rgba(0,201,177,0.2); }
     .badge-gold { background: rgba(212,168,83,0.15); color: var(--accent); border: 1px solid rgba(212,168,83,0.3); }
     .card-location { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text2); margin-bottom: 10px; }
+    .location-link { color: var(--accent); text-decoration: none; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+    .location-link:hover { color: var(--accent2); text-decoration: underline; }
     .card-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
     .stars { color: var(--accent); font-size: 13px; }
     .rating-val { font-size: 13px; font-weight: 700; color: var(--text); }
@@ -340,7 +343,10 @@
       border-radius: var(--radius); overflow: hidden;
       position: relative; box-shadow: var(--card-shadow);
       border: 1px solid var(--glass-border);
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
     }
+    .event-img-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); }
     .event-img {
       width: 100%; height: 240px; object-fit: cover; display: block;
     }
@@ -362,7 +368,9 @@
       background: var(--glass); border: 1px solid var(--glass-border);
       backdrop-filter: blur(16px);
       border-radius: var(--radius); padding: 24px; box-shadow: var(--card-shadow);
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+    .event-detail-card:has(.location-link):hover { cursor: pointer; box-shadow: var(--card-hover); }
     .event-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); margin-bottom: 10px; }
     .event-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; margin-bottom: 8px; color: var(--text); }
     .event-meta { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text2); margin-bottom: 6px; }
@@ -383,7 +391,7 @@
       border-radius: var(--radius); overflow: hidden;
       box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .img-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); }
+    .img-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); cursor: pointer; }
     .img-card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
     .img-card-body { padding: 16px; }
     .img-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--text); }
@@ -449,7 +457,7 @@
       border-radius: var(--radius); padding: 20px;
       box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .institution-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); }
+    .institution-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); cursor: pointer; }
     .institution-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
     .institution-icon {
       width: 44px; height: 44px; border-radius: 10px;
@@ -895,51 +903,51 @@
         <div class="event-img-overlay">
           <div class="event-featured-badge"><span class="badge-featured">FEATURED</span><span class="badge-category">Cultural</span></div>
           <div class="event-img-title">Surajkund International Crafts Mela</div>
-          <div class="event-img-meta">📅 Feb 1–16 (Annual) &nbsp;📍 Surajkund, Faridabad</div>
+          <div class="event-img-meta">📅 Feb 1–16 (Annual) &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Surajkund+Crafts+Mela+Faridabad" target="_blank" rel="noopener">Surajkund, Faridabad</a></div>
         </div>
       </div>
       <div class="event-detail-card">
         <span class="event-tag">Cultural</span>
         <div class="event-title">Surajkund International Crafts Mela</div>
         <div class="event-meta">📅 Feb 1–16 (Annual)</div>
-        <div class="event-meta">📍 Surajkund, near Gurugram border</div>
+        <div class="event-meta">📍 <a class="location-link" href="https://www.google.com/maps/search/Surajkund+Crafts+Mela+Faridabad" target="_blank" rel="noopener">Surajkund, near Gurugram border</a></div>
         <div class="event-desc">Asia's largest crafts fair drawing artisans from all over India and abroad. Features folk performances, traditional food, handicrafts, and cultural showcases — a must-visit NCR event every February.</div>
       </div>
     </div>
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">Gurugram Marathon</div><span class="card-badge badge-orange">Sports</span></div>
-        <div class="card-location">📅 Nov (Annual) &nbsp;📍 Cyber City Hub</div>
+        <div class="card-location">📅 Nov (Annual) &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Cyber+City+Hub+Gurugram" target="_blank" rel="noopener">Cyber City Hub</a></div>
         <div class="card-desc">Annual marathon attracting thousands of runners through Gurugram's key corridors. Categories from 5K fun run to full 42K marathon with corporate participation.</div>
         <div class="card-tags"><span class="tag">Running</span><span class="tag">Corporate</span><span class="tag">5K / 10K / 42K</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">NH7 Weekender NCR</div><span class="card-badge badge-purple">Music</span></div>
-        <div class="card-location">📅 Oct–Nov &nbsp;📍 Leisure Valley / IPCA</div>
+        <div class="card-location">📅 Oct–Nov &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Leisure+Valley+Gurugram" target="_blank" rel="noopener">Leisure Valley / IPCA</a></div>
         <div class="card-desc">India's happiest music festival returns to NCR. Multi-genre lineup across multiple stages featuring indie, electronic, and international artists over 2 days.</div>
         <div class="card-tags"><span class="tag">Indie</span><span class="tag">Electronic</span><span class="tag">International</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Diwali Mela & Fireworks</div><span class="card-badge badge-red">Religious</span></div>
-        <div class="card-location">📅 Oct–Nov (Annual) &nbsp;📍 Leisure Valley Park</div>
+        <div class="card-location">📅 Oct–Nov (Annual) &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Leisure+Valley+Park+Gurugram" target="_blank" rel="noopener">Leisure Valley Park</a></div>
         <div class="card-desc">Grand Diwali celebration with lights, fireworks, cultural performances, and food stalls. One of the biggest community festivals in the city.</div>
         <div class="card-tags"><span class="tag">Festival</span><span class="tag">Fireworks</span><span class="tag">Family</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Cyber Hub Food Festival</div><span class="card-badge badge-green">Food</span></div>
-        <div class="card-location">📅 Multiple dates &nbsp;📍 Cyber Hub</div>
+        <div class="card-location">📅 Multiple dates &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Cyber+Hub+Gurugram" target="_blank" rel="noopener">Cyber Hub</a></div>
         <div class="card-desc">Regular food and culture festivals at DLF Cyber Hub featuring celebrity chef appearances, live music, craft beers, and international cuisine pop-ups.</div>
         <div class="card-tags"><span class="tag">Food</span><span class="tag">Live Music</span><span class="tag">Craft Beer</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Holi Mela — Gurugram</div><span class="card-badge badge-red">Religious</span></div>
-        <div class="card-location">📅 March (Annual) &nbsp;📍 Sector 29 Ground</div>
+        <div class="card-location">📅 March (Annual) &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Sector+29+Gurugram" target="_blank" rel="noopener">Sector 29 Ground</a></div>
         <div class="card-desc">Vibrant Holi celebration with organic colours, dhol performers, traditional sweets, and community gatherings across residential sectors.</div>
         <div class="card-tags"><span class="tag">Holi</span><span class="tag">Community</span><span class="tag">Music</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Auto Expo — NCR</div><span class="card-badge badge-blue">Commercial</span></div>
-        <div class="card-location">📅 Biennial &nbsp;📍 Bharat Mandapam / IMT Manesar</div>
+        <div class="card-location">📅 Biennial &nbsp;📍 <a class="location-link" href="https://www.google.com/maps/search/Bharat+Mandapam+Manesar" target="_blank" rel="noopener">Bharat Mandapam / IMT Manesar</a></div>
         <div class="card-desc">Asia's largest motor show with global debuts, concept cars, electric vehicles, and auto industry showcases. Over 500,000 visitors across 10 days.</div>
         <div class="card-tags"><span class="tag">Automobiles</span><span class="tag">EVs</span><span class="tag">Technology</span></div>
       </div>
@@ -958,7 +966,7 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">WeWork Gurugram</div><span class="card-badge badge-blue">Coworking</span></div>
-        <div class="card-location">📍 DLF Cyber City, Phase II</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/DLF+Cyber+City+Phase+II+Gurugram" target="_blank" rel="noopener">DLF Cyber City, Phase II</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹9,000 – ₹18,000 / month</span></div>
         <div class="card-desc">Premium coworking in the heart of Cyber City with world-class amenities, stunning views, and a vibrant community of professionals.</div>
         <div class="card-tags"><span class="tag">Hot Desks</span><span class="tag">Private Cabins</span><span class="tag">Conference Rooms</span><span class="tag">24/7 Access</span></div>
@@ -966,7 +974,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Awfis Gurugram</div><span class="card-badge badge-blue">Coworking</span></div>
-        <div class="card-location">📍 MG Road, Sector 28</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/MG+Road+Sector+28+Gurugram" target="_blank" rel="noopener">MG Road, Sector 28</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span><span class="price">₹5,000 – ₹12,000 / month</span></div>
         <div class="card-desc">Flexible coworking spaces with daily, weekly, and monthly plans. Ideal for freelancers, startups, and SMEs across multiple Gurugram locations.</div>
         <div class="card-tags"><span class="tag">Flexible Plans</span><span class="tag">Wi-Fi</span><span class="tag">Printing</span><span class="tag">Café</span></div>
@@ -974,7 +982,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">91Springboard</div><span class="card-badge badge-blue">Coworking</span></div>
-        <div class="card-location">📍 Golf Course Road, Sector 54</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Golf+Course+Road+Sector+54+Gurugram" target="_blank" rel="noopener">Golf Course Road, Sector 54</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span><span class="price">₹6,000 – ₹14,000 / month</span></div>
         <div class="card-desc">India's largest coworking network offering startup-friendly plans with a strong community, mentorship access, and regular networking events.</div>
         <div class="card-tags"><span class="tag">Open Desks</span><span class="tag">Event Space</span><span class="tag">Mentorship</span></div>
@@ -982,7 +990,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Smartworks</div><span class="card-badge badge-purple">Managed Office</span></div>
-        <div class="card-location">📍 Unitech Cyber Park, Sector 39</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Unitech+Cyber+Park+Sector+39+Gurugram" target="_blank" rel="noopener">Unitech Cyber Park, Sector 39</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.4</span><span class="price">₹7,500 – ₹16,000 / month</span></div>
         <div class="card-desc">Enterprise-grade flexible workspaces with plug-and-play infrastructure and premium end-to-end managed office services for corporates.</div>
         <div class="card-tags"><span class="tag">Plug & Play</span><span class="tag">Biometric</span><span class="tag">Cafeteria</span><span class="tag">Parking</span></div>
@@ -990,7 +998,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">IndiQube</div><span class="card-badge badge-purple">Managed Office</span></div>
-        <div class="card-location">📍 Spaze IT Park, Sector 49</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Spaze+IT+Park+Sector+49+Gurugram" target="_blank" rel="noopener">Spaze IT Park, Sector 49</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹8,000 – ₹17,000 / month</span></div>
         <div class="card-desc">Fully managed office solutions tailored for mid-size and enterprise clients with transparent pricing and dedicated support team.</div>
         <div class="card-tags"><span class="tag">Customisable</span><span class="tag">CCTV</span><span class="tag">Power Backup</span></div>
@@ -998,7 +1006,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">CoWrks Gurugram</div><span class="card-badge badge-teal">Enterprise</span></div>
-        <div class="card-location">📍 RMZ Infinity, Golf Course Ext Rd</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/RMZ+Infinity+Golf+Course+Gurugram" target="_blank" rel="noopener">RMZ Infinity, Golf Course Ext Rd</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span><span class="price">₹8,500 – ₹20,000 / month</span></div>
         <div class="card-desc">Premium workspace brand focused on enterprise clients. State-of-the-art design, high-speed internet, and a curated professional community.</div>
         <div class="card-tags"><span class="tag">Enterprise</span><span class="tag">Lounge</span><span class="tag">Rooftop</span></div>
@@ -1021,7 +1029,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=400&q=80" alt="Ambience Mall" />
         <div class="img-card-body">
           <div class="img-card-name">Ambience Mall</div>
-          <div class="img-card-location">📍 NH-48, Sector 24</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Ambience+Mall+Sector+24+Gurugram" target="_blank" rel="noopener">NH-48, Sector 24</a></div>
           <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span></div>
           <div class="img-card-desc">One of India's largest and most premium malls with 250+ stores, 5-star hotels, luxury brands, a multiplex, and fine dining restaurants.</div>
           <div class="card-tags"><span class="tag">Luxury</span><span class="tag">Multiplex</span><span class="tag">Fine Dining</span><span class="tag">Hotel</span></div>
@@ -1031,7 +1039,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?w=400&q=80" alt="DLF Cyber Hub" />
         <div class="img-card-body">
           <div class="img-card-name">DLF Cyber Hub</div>
-          <div class="img-card-location">📍 DLF Phase II, Cyber City</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/DLF+Cyber+Hub+Gurugram" target="_blank" rel="noopener">DLF Phase II, Cyber City</a></div>
           <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.7</span></div>
           <div class="img-card-desc">Iconic food, retail, and entertainment hub in the heart of Cyber City. 90+ restaurants, bars, and branded stores with vibrant nightlife.</div>
           <div class="card-tags"><span class="tag">Restaurants</span><span class="tag">Bars</span><span class="tag">Nightlife</span><span class="tag">Corporate</span></div>
@@ -1041,7 +1049,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1586880244406-556ebe35f282?w=400&q=80" alt="MGF Metropolitan Mall" />
         <div class="img-card-body">
           <div class="img-card-name">MGF Metropolitan Mall</div>
-          <div class="img-card-location">📍 MG Road, Sector 14</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/MGF+Metropolitan+Mall+Gurugram" target="_blank" rel="noopener">MG Road, Sector 14</a></div>
           <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span></div>
           <div class="img-card-desc">One of Gurugram's oldest and most accessible malls on MG Road with fashion retail, food court, and entertainment on multiple levels.</div>
           <div class="card-tags"><span class="tag">Fashion</span><span class="tag">Food Court</span><span class="tag">Metro Access</span></div>
@@ -1051,7 +1059,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1567449303183-ae0d6ed1498c?w=400&q=80" alt="South Point Mall" />
         <div class="img-card-body">
           <div class="img-card-name">South Point Mall</div>
-          <div class="img-card-location">📍 Golf Course Road, Sector 53</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/South+Point+Mall+Gurugram" target="_blank" rel="noopener">Golf Course Road, Sector 53</a></div>
           <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.0</span></div>
           <div class="img-card-desc">Upscale lifestyle mall with premium brands, gourmet dining, and a family entertainment zone catering to south Gurugram residents.</div>
           <div class="card-tags"><span class="tag">Lifestyle</span><span class="tag">Dining</span><span class="tag">Premium</span></div>
@@ -1061,7 +1069,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=80" alt="Ardee Mall" />
         <div class="img-card-body">
           <div class="img-card-name">Ardee Mall</div>
-          <div class="img-card-location">📍 Sector 52, Golf Course Extension</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Ardee+Mall+Gurugram" target="_blank" rel="noopener">Sector 52, Golf Course Extension</a></div>
           <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">3.9</span></div>
           <div class="img-card-desc">Popular neighbourhood mall with a good mix of fashion, electronics, and entertainment, serving the rapidly growing New Gurugram areas.</div>
           <div class="card-tags"><span class="tag">Electronics</span><span class="tag">Fashion</span><span class="tag">Multiplex</span></div>
@@ -1071,7 +1079,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=80" alt="Omaxe Gurgaon Mall" />
         <div class="img-card-body">
           <div class="img-card-name">Omaxe Gurgaon Mall</div>
-          <div class="img-card-location">📍 Sector 49, Sohna Road</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Omaxe+Gurgaon+Mall+Sector+49" target="_blank" rel="noopener">Sector 49, Sohna Road</a></div>
           <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">3.8</span></div>
           <div class="img-card-desc">Large format retail mall with major anchor stores, a food court, hypermarket, and family entertainment catering to south Gurugram.</div>
           <div class="card-tags"><span class="tag">Hypermarket</span><span class="tag">Family</span><span class="tag">Food Court</span></div>
@@ -1092,42 +1100,42 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">Cyber Hub — Food Street</div><span class="card-badge badge-orange">Multi-Cuisine</span></div>
-        <div class="card-location">📍 DLF Cyber City, Phase II</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Cyber+Hub+Food+Street+DLF+Cyber+City+Gurugram" target="_blank" rel="noopener">DLF Cyber City, Phase II</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.7</span><span class="price">₹800 – ₹2,500 for two</span></div>
         <div class="card-desc">90+ premium restaurants, cafés, and bars in a vibrant outdoor setting. From casual bites to fine dining — Gurugram's definitive food destination.</div>
         <div class="card-tags"><span class="tag">Italian</span><span class="tag">Japanese</span><span class="tag">Craft Beer</span><span class="tag">Rooftop</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Sector 29 Food Hub</div><span class="card-badge badge-green">Street Food</span></div>
-        <div class="card-location">📍 Sector 29, Huda Market Area</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sector+29+Food+Hub+Huda+Market+Gurugram" target="_blank" rel="noopener">Sector 29, Huda Market Area</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span><span class="price">₹200 – ₹800 for two</span></div>
         <div class="card-desc">Gurugram's most popular street food corridor with dozens of vendors, dhabas, and casual restaurants. Famous for kebabs, momos, and chaat.</div>
         <div class="card-tags"><span class="tag">Kebabs</span><span class="tag">Momos</span><span class="tag">Chaat</span><span class="tag">Budget</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Golf Course Road Dining</div><span class="card-badge badge-purple">Fine Dining</span></div>
-        <div class="card-location">📍 Golf Course Road, Sector 54</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Golf+Course+Road+Fine+Dining+Sector+54+Gurugram" target="_blank" rel="noopener">Golf Course Road, Sector 54</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹1,500 – ₹4,000 for two</span></div>
         <div class="card-desc">Premium dining strip featuring signature restaurants like Farzi Café, Lord of the Drinks, and Massive Restaurants — ideal for corporate dinners.</div>
         <div class="card-tags"><span class="tag">Fine Dining</span><span class="tag">Bar</span><span class="tag">Corporate</span><span class="tag">Rooftop</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Galleria Market Cafés</div><span class="card-badge badge-blue">Café</span></div>
-        <div class="card-location">📍 DLF Phase IV, Sector 28</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Galleria+Market+DLF+Phase+IV+Sector+28+Gurugram" target="_blank" rel="noopener">DLF Phase IV, Sector 28</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span><span class="price">₹400 – ₹1,200 for two</span></div>
         <div class="card-desc">Tree-lined market with popular cafés, bakeries, and casual restaurants. A favourite weekend spot for DLF Phase 4 and Sushant Lok residents.</div>
         <div class="card-tags"><span class="tag">Café</span><span class="tag">Bakery</span><span class="tag">Brunch</span><span class="tag">Outdoor</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Sohna Road Dhabas</div><span class="card-badge badge-orange">Dhaba</span></div>
-        <div class="card-location">📍 Sohna Road, Sector 48</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sohna+Road+Dhabas+Sector+48+Gurugram" target="_blank" rel="noopener">Sohna Road, Sector 48</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.0</span><span class="price">₹150 – ₹500 for two</span></div>
         <div class="card-desc">Row of authentic Punjabi dhabas serving dal makhani, butter naan, and tandoori chicken. Popular with construction workers and night owls alike.</div>
         <div class="card-tags"><span class="tag">Punjabi</span><span class="tag">Dal Makhani</span><span class="tag">Budget</span><span class="tag">24 Hours</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Palam Vihar Market</div><span class="card-badge badge-green">Local Food</span></div>
-        <div class="card-location">📍 Palam Vihar, Sector 2</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Palam+Vihar+Market+Sector+2+Gurugram" target="_blank" rel="noopener">Palam Vihar, Sector 2</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span><span class="price">₹100 – ₹400 for two</span></div>
         <div class="card-desc">Bustling neighbourhood market with affordable local eateries, juice centres, and snack stalls. Great for evening chai and street food.</div>
         <div class="card-tags"><span class="tag">Chai</span><span class="tag">Snacks</span><span class="tag">Local</span><span class="tag">Affordable</span></div>
@@ -1147,25 +1155,25 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">Sadar Bazaar Gurugram</div><span class="card-badge badge-orange">Wholesale</span></div>
-        <div class="card-location">📍 Old Gurugram, Sadar Bazaar Road</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sadar+Bazaar+Old+Gurugram" target="_blank" rel="noopener">Old Gurugram, Sadar Bazaar Road</a></div>
         <div class="card-desc">Old Gurugram's historic wholesale market for clothing, electronics, vegetables, and daily essentials. Busiest on weekends.</div>
         <div class="card-tags"><span class="tag">Clothing</span><span class="tag">Vegetables</span><span class="tag">Electronics</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Galleria Market</div><span class="card-badge badge-blue">Upscale</span></div>
-        <div class="card-location">📍 DLF Phase IV, Sector 28</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Galleria+Market+DLF+Phase+IV+Sector+28+Gurugram" target="_blank" rel="noopener">DLF Phase IV, Sector 28</a></div>
         <div class="card-desc">Upscale open-air market with designer boutiques, organic stores, salons, and premium food options. Popular with DLF residents.</div>
         <div class="card-tags"><span class="tag">Designer</span><span class="tag">Organic</span><span class="tag">Boutique</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Shankar Chowk Market</div><span class="card-badge badge-green">Electronics</span></div>
-        <div class="card-location">📍 Shankar Chowk, Sector 15</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Shankar+Chowk+Sector+15+Gurugram" target="_blank" rel="noopener">Shankar Chowk, Sector 15</a></div>
         <div class="card-desc">Popular electronics, mobile, and computer accessories market. Best prices on secondhand laptops, phone repairs, and accessories.</div>
         <div class="card-tags"><span class="tag">Mobile Phones</span><span class="tag">Laptops</span><span class="tag">Accessories</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Sohna Road Wholesale</div><span class="card-badge badge-orange">Wholesale</span></div>
-        <div class="card-location">📍 Sohna Road, Sector 48</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sohna+Road+Wholesale+Sector+48+Gurugram" target="_blank" rel="noopener">Sohna Road, Sector 48</a></div>
         <div class="card-desc">Large wholesale market for construction materials, furniture, and home décor. Popular with builders and interior designers across NCR.</div>
         <div class="card-tags"><span class="tag">Furniture</span><span class="tag">Home Décor</span><span class="tag">Construction</span></div>
       </div>
@@ -1186,7 +1194,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&q=80" alt="Kingdom of Dreams" />
         <div class="img-card-body">
           <div class="img-card-name">Kingdom of Dreams</div>
-          <div class="img-card-location">📍 Sector 29, Entertainment City</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Kingdom+of+Dreams+Sector+29+Gurugram" target="_blank" rel="noopener">Sector 29, Entertainment City</a></div>
           <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span></div>
           <div class="img-card-desc">India's first live entertainment and theatre destination. Features Broadway-style Bollywood shows, a cultural gully, and food from 14 Indian states.</div>
           <div class="card-tags"><span class="tag">Theatre</span><span class="tag">Bollywood</span><span class="tag">Cultural</span></div>
@@ -1196,7 +1204,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&q=80" alt="Leisure Valley Park" />
         <div class="img-card-body">
           <div class="img-card-name">Leisure Valley Park</div>
-          <div class="img-card-location">📍 Sector 29</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Leisure+Valley+Park+Sector+29+Gurugram" target="_blank" rel="noopener">Sector 29</a></div>
           <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span></div>
           <div class="img-card-desc">Urban green lung in the heart of Gurugram with jogging tracks, manicured gardens, amphitheatre, and regular community events.</div>
           <div class="card-tags"><span class="tag">Park</span><span class="tag">Jogging</span><span class="tag">Events</span></div>
@@ -1206,7 +1214,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1477281765962-ef34e8bb0967?w=400&q=80" alt="Sultanpur Bird Sanctuary" />
         <div class="img-card-body">
           <div class="img-card-name">Sultanpur Bird Sanctuary</div>
-          <div class="img-card-location">📍 Sultanpur, 15 km from Gurugram</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sultanpur+Bird+Sanctuary+Haryana" target="_blank" rel="noopener">Sultanpur, 15 km from Gurugram</a></div>
           <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.4</span></div>
           <div class="img-card-desc">National park and bird sanctuary hosting 250+ species of resident and migratory birds. Best visited October–March during migration season.</div>
           <div class="card-tags"><span class="tag">Birdwatching</span><span class="tag">Nature</span><span class="tag">Photography</span></div>
@@ -1216,7 +1224,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" alt="Sheetla Mata Mandir" />
         <div class="img-card-body">
           <div class="img-card-name">Sheetla Mata Mandir</div>
-          <div class="img-card-location">📍 Old Gurugram</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sheetla+Mata+Mandir+Old+Gurugram" target="_blank" rel="noopener">Old Gurugram</a></div>
           <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.6</span></div>
           <div class="img-card-desc">Ancient temple dedicated to Goddess Sheetla Mata — Gurugram's most revered religious site. Crowded during Navratri and Sheetla Ashtami.</div>
           <div class="card-tags"><span class="tag">Temple</span><span class="tag">Heritage</span><span class="tag">Religious</span></div>
@@ -1237,7 +1245,7 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">PVR IMAX — Ambience Mall</div><span class="card-badge badge-blue">Cinema</span></div>
-        <div class="card-location">📍 Ambience Mall, NH-48</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/PVR+IMAX+Ambience+Mall+Gurugram" target="_blank" rel="noopener">Ambience Mall, NH-48</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span></div>
         <div class="card-desc">Premium IMAX and 4DX screens with motion seating. Largest cinema complex in Gurugram with VIP lounges and in-seat dining experience.</div>
         <div class="card-tags"><span class="tag">IMAX</span><span class="tag">4DX</span><span class="tag">VIP</span></div>
@@ -1245,7 +1253,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Smaaash Entertainment</div><span class="card-badge badge-purple">Gaming</span></div>
-        <div class="card-location">📍 DLF Cyber Hub</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Smaaash+Entertainment+DLF+Cyber+Hub+Gurugram" target="_blank" rel="noopener">DLF Cyber Hub</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.1</span></div>
         <div class="card-desc">Sports entertainment centre with VR gaming, bowling, indoor cricket simulators, go-karts, and a sports bar. Perfect for corporate events.</div>
         <div class="card-tags"><span class="tag">VR Gaming</span><span class="tag">Bowling</span><span class="tag">Go-Kart</span></div>
@@ -1253,7 +1261,7 @@
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Kingdom of Dreams</div><span class="card-badge badge-orange">Theatre</span></div>
-        <div class="card-location">📍 Sector 29</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Kingdom+of+Dreams+Entertainment+Sector+29+Gurugram" target="_blank" rel="noopener">Sector 29</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span></div>
         <div class="card-desc">India's first live entertainment complex with two grand theatres hosting spectacular Bollywood musical productions and cultural shows nightly.</div>
         <div class="card-tags"><span class="tag">Bollywood Shows</span><span class="tag">Live Theatre</span><span class="tag">Dinner</span></div>
@@ -1274,21 +1282,21 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">DLF Golf & Country Club</div><span class="card-badge badge-green">Golf</span></div>
-        <div class="card-location">📍 DLF Phase V, Sector 42</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/DLF+Golf+Country+Club+Sector+42+Gurugram" target="_blank" rel="noopener">DLF Phase V, Sector 42</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.8</span></div>
         <div class="card-desc">Premier 18-hole golf course hosting international tournaments. Features a clubhouse, swimming pool, tennis courts, and fine dining for members.</div>
         <div class="card-tags"><span class="tag">Golf</span><span class="tag">Tennis</span><span class="tag">Swimming</span><span class="tag">Members Only</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Tau Devi Lal Stadium</div><span class="card-badge badge-blue">Multi-Sport</span></div>
-        <div class="card-location">📍 Sector 38</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Tau+Devi+Lal+Stadium+Sector+38+Gurugram" target="_blank" rel="noopener">Sector 38</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.0</span></div>
         <div class="card-desc">Large multi-purpose sports stadium with cricket nets, athletic tracks, football grounds, and facilities for state-level competitions.</div>
         <div class="card-tags"><span class="tag">Cricket</span><span class="tag">Athletics</span><span class="tag">Football</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Gurugram Cricket Academy</div><span class="card-badge badge-orange">Cricket</span></div>
-        <div class="card-location">📍 Sector 17</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Gurugram+Cricket+Academy+Sector+17" target="_blank" rel="noopener">Sector 17</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span></div>
         <div class="card-desc">Professional cricket coaching academy with indoor nets, video analysis, and certified coaches training youth and adult cricketers.</div>
         <div class="card-tags"><span class="tag">Coaching</span><span class="tag">Indoor Nets</span><span class="tag">Youth</span></div>
@@ -1309,7 +1317,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon" style="background:rgba(245,158,11,0.15);">🛕</div>
-          <div><div class="institution-name">Sheetla Mata Mandir</div><div class="institution-type">Ancient Temple • Old Gurugram</div></div>
+          <div><div class="institution-name">Sheetla Mata Mandir</div><div class="institution-type">Ancient Temple • <a class="location-link" href="https://www.google.com/maps/search/Sheetla+Mata+Mandir+Gurugram" target="_blank" rel="noopener">Old Gurugram</a></div></div>
         </div>
         <div class="institution-desc">Most revered temple in Gurugram. Devoted to Goddess Sheetla Mata, it attracts lakhs of devotees during Navratri and Ashtami.</div>
         <div class="institution-info"><span class="info-pill">Ancient Temple</span><span class="info-pill">Navratri Special</span><span class="info-pill">Open Daily</span></div>
@@ -1317,7 +1325,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon" style="background:rgba(139,92,246,0.15);">🕌</div>
-          <div><div class="institution-name">Dargah of Shah Chokha</div><div class="institution-type">Sufi Shrine • Sector 18</div></div>
+          <div><div class="institution-name">Dargah of Shah Chokha</div><div class="institution-type">Sufi Shrine • <a class="location-link" href="https://www.google.com/maps/search/Dargah+Shah+Chokha+Sector+18+Gurugram" target="_blank" rel="noopener">Sector 18</a></div></div>
         </div>
         <div class="institution-desc">Centuries-old Sufi dargah known for its spiritual atmosphere. Visited by people of all faiths, especially during Urs celebrations.</div>
         <div class="institution-info"><span class="info-pill">Sufi Shrine</span><span class="info-pill">All Faiths Welcome</span></div>
@@ -1325,7 +1333,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon" style="background:rgba(59,130,246,0.15);">⛪</div>
-          <div><div class="institution-name">Gurudwara Sector 46</div><div class="institution-type">Sikh Gurudwara • Sector 46</div></div>
+          <div><div class="institution-name">Gurudwara Sector 46</div><div class="institution-type">Sikh Gurudwara • <a class="location-link" href="https://www.google.com/maps/search/Gurudwara+Sector+46+Gurugram" target="_blank" rel="noopener">Sector 46</a></div></div>
         </div>
         <div class="institution-desc">Prominent Sikh Gurudwara serving langars (community meals) and regular kirtan. Active centre for community welfare and festivals.</div>
         <div class="institution-info"><span class="info-pill">Langar</span><span class="info-pill">Kirtan</span><span class="info-pill">Open 24hrs</span></div>
@@ -1333,7 +1341,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon" style="background:rgba(245,158,11,0.15);">🛕</div>
-          <div><div class="institution-name">Pracheen Hanuman Mandir</div><div class="institution-type">Ancient Temple • Sector 57</div></div>
+          <div><div class="institution-name">Pracheen Hanuman Mandir</div><div class="institution-type">Ancient Temple • <a class="location-link" href="https://www.google.com/maps/search/Pracheen+Hanuman+Mandir+Sector+57+Gurugram" target="_blank" rel="noopener">Sector 57</a></div></div>
         </div>
         <div class="institution-desc">Ancient Hanuman temple with large number of devotees on Tuesdays and Saturdays. Known for its peaceful garden premises.</div>
         <div class="institution-info"><span class="info-pill">Tues & Sat Bhog</span><span class="info-pill">Garden</span></div>
@@ -1353,21 +1361,21 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">DLF The Crest</div><span class="card-badge badge-purple">Luxury</span></div>
-        <div class="card-location">📍 DLF Phase 5, Sector 54</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/DLF+The+Crest+Sector+54+Gurugram" target="_blank" rel="noopener">DLF Phase 5, Sector 54</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.7</span><span class="price">₹3.5 – ₹7 Cr</span></div>
         <div class="card-desc">Ultra-luxury residential tower with concierge services, infinity pools, and world-class amenities in the prime Golf Course Road belt.</div>
         <div class="card-tags"><span class="tag">3/4 BHK</span><span class="tag">Pool</span><span class="tag">Concierge</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Emaar Palm Heights</div><span class="card-badge badge-blue">Premium</span></div>
-        <div class="card-location">📍 Sector 77, New Gurugram</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Emaar+Palm+Heights+Sector+77+Gurugram" target="_blank" rel="noopener">Sector 77, New Gurugram</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.3</span><span class="price">₹1.2 – ₹2.8 Cr</span></div>
         <div class="card-desc">Premium high-rise apartments in New Gurugram with modern amenities, clubhouse, and proximity to NH-48 and Southern Peripheral Road.</div>
         <div class="card-tags"><span class="tag">2/3 BHK</span><span class="tag">Clubhouse</span><span class="tag">New Gurugram</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Sobha City</div><span class="card-badge badge-green">Ready to Move</span></div>
-        <div class="card-location">📍 Sector 108, Dwarka Expressway</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sobha+City+Sector+108+Dwarka+Expressway+Gurugram" target="_blank" rel="noopener">Sector 108, Dwarka Expressway</a></div>
         <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-val">4.5</span><span class="price">₹80L – ₹1.8 Cr</span></div>
         <div class="card-desc">Integrated township by Sobha with fully constructed towers, lush green landscape, and easy access to Dwarka Expressway metro.</div>
         <div class="card-tags"><span class="tag">Ready to Move</span><span class="tag">Metro Nearby</span><span class="tag">Township</span></div>
@@ -1387,21 +1395,21 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">Stanza Living</div><span class="card-badge badge-purple">Co-Living</span></div>
-        <div class="card-location">📍 Multiple — Cyber City, Sector 14, Sohna Rd</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Stanza+Living+Cyber+City+Gurugram" target="_blank" rel="noopener">Multiple — Cyber City, Sector 14, Sohna Rd</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">4.2</span><span class="price">₹8,000 – ₹18,000 / month</span></div>
         <div class="card-desc">Premium co-living with furnished rooms, daily housekeeping, high-speed WiFi, gym, and community events. App-based access management.</div>
         <div class="card-tags"><span class="tag">WiFi</span><span class="tag">Meals</span><span class="tag">Gym</span><span class="tag">AC Rooms</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">OYO Life</div><span class="card-badge badge-red">PG</span></div>
-        <div class="card-location">📍 Sector 14, 28, 56 — Multiple Locations</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/OYO+Life+Sector+14+Gurugram" target="_blank" rel="noopener">Sector 14, 28, 56 — Multiple Locations</a></div>
         <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-val">3.9</span><span class="price">₹5,000 – ₹12,000 / month</span></div>
         <div class="card-desc">Managed PG accommodations with standardised amenities. Includes housekeeping, WiFi, and food. Popular with young professionals and students.</div>
         <div class="card-tags"><span class="tag">WiFi</span><span class="tag">Furnished</span><span class="tag">Security</span></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">Sector 14 PG Cluster</div><span class="card-badge badge-green">Budget PG</span></div>
-        <div class="card-location">📍 Sector 14, Old Gurugram</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sector+14+Gurugram+PG" target="_blank" rel="noopener">Sector 14, Old Gurugram</a></div>
         <div class="card-rating"><span class="stars">★★★☆☆</span><span class="rating-val">3.6</span><span class="price">₹3,500 – ₹8,000 / month</span></div>
         <div class="card-desc">Dense cluster of independent PG homes near MG Road metro. Budget options with attached bathrooms, meals included. Well-known among MNC freshers.</div>
         <div class="card-tags"><span class="tag">Budget</span><span class="tag">Meals</span><span class="tag">Metro Nearby</span></div>
@@ -1422,7 +1430,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-hospital">🏥</div>
-          <div><div class="institution-name">Medanta — The Medicity</div><div class="institution-type">Super Specialty • Sector 38</div></div>
+          <div><div class="institution-name">Medanta — The Medicity</div><div class="institution-type">Super Specialty • <a class="location-link" href="https://www.google.com/maps/search/Medanta+Hospital+Sector+38+Gurugram" target="_blank" rel="noopener">Sector 38</a></div></div>
         </div>
         <div class="institution-desc">India's largest private multi-specialty hospital. 1,600+ beds, world-class cardiac, cancer, and neuro care with internationally trained specialists.</div>
         <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">1600+ Beds</span><span class="info-pill">Cardiac | Oncology</span><span class="info-pill">+91 124-4141414</span></div>
@@ -1430,7 +1438,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-hospital">🏥</div>
-          <div><div class="institution-name">Fortis Memorial Research Institute</div><div class="institution-type">Super Specialty • Sector 44</div></div>
+          <div><div class="institution-name">Fortis Memorial Research Institute</div><div class="institution-type">Super Specialty • <a class="location-link" href="https://www.google.com/maps/search/Fortis+Memorial+Research+Institute+Sector+44+Gurugram" target="_blank" rel="noopener">Sector 44</a></div></div>
         </div>
         <div class="institution-desc">Premium tertiary care hospital with advanced robotic surgery, transplant programs, and internationally accredited quality of care.</div>
         <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">Robotic Surgery</span><span class="info-pill">Transplant</span><span class="info-pill">+91 124-4962200</span></div>
@@ -1438,7 +1446,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-hospital">🏥</div>
-          <div><div class="institution-name">Artemis Hospital</div><div class="institution-type">Multi-Specialty • Sector 51</div></div>
+          <div><div class="institution-name">Artemis Hospital</div><div class="institution-type">Multi-Specialty • <a class="location-link" href="https://www.google.com/maps/search/Artemis+Hospital+Sector+51+Gurugram" target="_blank" rel="noopener">Sector 51</a></div></div>
         </div>
         <div class="institution-desc">JCI-accredited multi-specialty hospital with advanced diagnostic imaging, cardiology, orthopedics, and paediatric intensive care units.</div>
         <div class="institution-info"><span class="info-pill">JCI Accredited</span><span class="info-pill">Cardiology</span><span class="info-pill">Paediatrics</span><span class="info-pill">+91 124-4511111</span></div>
@@ -1446,7 +1454,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-hospital">🏥</div>
-          <div><div class="institution-name">Max Hospital Gurugram</div><div class="institution-type">Multi-Specialty • Sector 56</div></div>
+          <div><div class="institution-name">Max Hospital Gurugram</div><div class="institution-type">Multi-Specialty • <a class="location-link" href="https://www.google.com/maps/search/Max+Hospital+Sector+56+Gurugram" target="_blank" rel="noopener">Sector 56</a></div></div>
         </div>
         <div class="institution-desc">Comprehensive healthcare with strong oncology, neurology, and women's health departments. Known for affordable yet quality care.</div>
         <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">Oncology</span><span class="info-pill">Women's Health</span><span class="info-pill">+91 124-2222222</span></div>
@@ -1454,7 +1462,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-hospital">🏥</div>
-          <div><div class="institution-name">Paras Hospital</div><div class="institution-type">Multi-Specialty • Sector 2</div></div>
+          <div><div class="institution-name">Paras Hospital</div><div class="institution-type">Multi-Specialty • <a class="location-link" href="https://www.google.com/maps/search/Paras+Hospital+Sector+2+Gurugram" target="_blank" rel="noopener">Sector 2</a></div></div>
         </div>
         <div class="institution-desc">Well-established hospital in old Gurugram with strong emergency medicine, general surgery, and maternity departments serving local communities.</div>
         <div class="institution-info"><span class="info-pill">24/7 Emergency</span><span class="info-pill">Maternity</span><span class="info-pill">Surgery</span></div>
@@ -1462,7 +1470,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-hospital">🧬</div>
-          <div><div class="institution-name">Civil Hospital Gurugram</div><div class="institution-type">Government Hospital • Sector 10</div></div>
+          <div><div class="institution-name">Civil Hospital Gurugram</div><div class="institution-type">Government Hospital • <a class="location-link" href="https://www.google.com/maps/search/Civil+Hospital+Sector+10+Gurugram" target="_blank" rel="noopener">Sector 10</a></div></div>
         </div>
         <div class="institution-desc">Primary government hospital offering free and subsidised healthcare. Essential services including general OPD, maternal care, and emergency.</div>
         <div class="institution-info"><span class="info-pill">Government</span><span class="info-pill">Free OPD</span><span class="info-pill">24/7 Emergency</span></div>
@@ -1483,7 +1491,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-school">🎓</div>
-          <div><div class="institution-name">The Shri Ram School, Aravali</div><div class="institution-type">CBSE / IBDP • Sector 40</div></div>
+          <div><div class="institution-name">The Shri Ram School, Aravali</div><div class="institution-type">CBSE / IBDP • <a class="location-link" href="https://www.google.com/maps/search/Shri+Ram+School+Sector+40+Gurugram" target="_blank" rel="noopener">Sector 40</a></div></div>
         </div>
         <div class="institution-desc">One of India's most prestigious schools with CBSE and IB programs. Known for academics, sports, and holistic student development.</div>
         <div class="institution-info"><span class="info-pill">CBSE + IBDP</span><span class="info-pill">Grades 1–12</span><span class="info-pill">Sports Complex</span></div>
@@ -1491,7 +1499,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-school">🎓</div>
-          <div><div class="institution-name">DPS Sector 45</div><div class="institution-type">CBSE • Sector 45</div></div>
+          <div><div class="institution-name">DPS Sector 45</div><div class="institution-type">CBSE • <a class="location-link" href="https://www.google.com/maps/search/DPS+Sector+45+Gurugram" target="_blank" rel="noopener">Sector 45</a></div></div>
         </div>
         <div class="institution-desc">Delhi Public School flagship campus in Gurugram. Excellent faculty, large campus with sports facilities, labs, and library.</div>
         <div class="institution-info"><span class="info-pill">CBSE</span><span class="info-pill">Grades 1–12</span><span class="info-pill">Large Campus</span></div>
@@ -1499,7 +1507,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-school">🎓</div>
-          <div><div class="institution-name">Pathways School Gurgaon</div><div class="institution-type">IB World School • Sector 100</div></div>
+          <div><div class="institution-name">Pathways School Gurgaon</div><div class="institution-type">IB World School • <a class="location-link" href="https://www.google.com/maps/search/Pathways+School+Sector+100+Gurugram" target="_blank" rel="noopener">Sector 100</a></div></div>
         </div>
         <div class="institution-desc">IB World School offering PYP, MYP, and DP curricula. Modern campus with international faculty and strong university placement record.</div>
         <div class="institution-info"><span class="info-pill">IB Curriculum</span><span class="info-pill">International</span><span class="info-pill">IBDP</span></div>
@@ -1507,7 +1515,7 @@
       <div class="institution-card">
         <div class="institution-header">
           <div class="institution-icon icon-school">🎓</div>
-          <div><div class="institution-name">GD Goenka University</div><div class="institution-type">University • Sohna Road</div></div>
+          <div><div class="institution-name">GD Goenka University</div><div class="institution-type">University • <a class="location-link" href="https://www.google.com/maps/search/GD+Goenka+University+Sohna+Road+Gurugram" target="_blank" rel="noopener">Sohna Road</a></div></div>
         </div>
         <div class="institution-desc">Leading private university offering engineering, management, law, design, and media programs with strong industry connections and placements.</div>
         <div class="institution-info"><span class="info-pill">Engineering</span><span class="info-pill">Management</span><span class="info-pill">Law & Design</span></div>
@@ -1662,7 +1670,7 @@
     <div class="cards-grid reveal">
       <div class="itpark-card">
         <div class="itpark-name">DLF Cyber City</div>
-        <div class="itpark-sector">📍 Phase II, Sector 24–25A</div>
+        <div class="itpark-sector">📍 <a class="location-link" href="https://www.google.com/maps/search/DLF+Cyber+City+Phase+II+Sector+24+Gurugram" target="_blank" rel="noopener">Phase II, Sector 24–25A</a></div>
         <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">India's largest planned IT hub with 30M+ sqft of office space. Home to 200+ Fortune 500 companies, Rapid Metro access, and DLF Cyber Hub.</div>
         <div class="itpark-companies">
           <span class="company-tag">Google</span><span class="company-tag">Microsoft</span><span class="company-tag">American Express</span><span class="company-tag">Accenture</span><span class="company-tag">Cognizant</span>
@@ -1671,7 +1679,7 @@
       </div>
       <div class="itpark-card">
         <div class="itpark-name">Unitech Cyber Park</div>
-        <div class="itpark-sector">📍 Sector 39</div>
+        <div class="itpark-sector">📍 <a class="location-link" href="https://www.google.com/maps/search/Unitech+Cyber+Park+Sector+39+Gurugram" target="_blank" rel="noopener">Sector 39</a></div>
         <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">Premium Grade-A office complex with multiple towers housing leading BPO, IT services, and consulting companies across 2M sqft.</div>
         <div class="itpark-companies">
           <span class="company-tag">Genpact</span><span class="company-tag">EXL</span><span class="company-tag">WNS</span><span class="company-tag">Mphasis</span>
@@ -1680,7 +1688,7 @@
       </div>
       <div class="itpark-card">
         <div class="itpark-name">Spaze IT Park</div>
-        <div class="itpark-sector">📍 Sector 49, Sohna Road</div>
+        <div class="itpark-sector">📍 <a class="location-link" href="https://www.google.com/maps/search/Spaze+IT+Park+Sector+49+Sohna+Road+Gurugram" target="_blank" rel="noopener">Sector 49, Sohna Road</a></div>
         <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">Modern office complex with plug-and-play infrastructure serving mid-size IT and ITES companies in the rapidly developing south Gurugram corridor.</div>
         <div class="itpark-companies">
           <span class="company-tag">HCL</span><span class="company-tag">Wipro BPO</span><span class="company-tag">Teleperformance</span>
@@ -1689,7 +1697,7 @@
       </div>
       <div class="itpark-card">
         <div class="itpark-name">Golf Course Road Corridor</div>
-        <div class="itpark-sector">📍 Sector 42–54, Golf Course Road</div>
+        <div class="itpark-sector">📍 <a class="location-link" href="https://www.google.com/maps/search/Golf+Course+Road+Sector+42+to+54+Gurugram" target="_blank" rel="noopener">Sector 42–54, Golf Course Road</a></div>
         <div class="card-desc" style="font-size:13px;color:var(--text2);margin-bottom:10px;">Premium office corridor housing financial services, consulting, and technology firms in luxury Grade-A buildings alongside Gurugram's best residential zones.</div>
         <div class="itpark-companies">
           <span class="company-tag">McKinsey</span><span class="company-tag">BCG</span><span class="company-tag">Goldman Sachs</span><span class="company-tag">Deutsche Bank</span>
@@ -1711,28 +1719,28 @@
     <div class="cards-grid reveal">
       <div class="card">
         <div class="card-header"><div class="card-name">MCG — Municipal Corporation</div><span class="card-badge badge-blue">Civic</span></div>
-        <div class="card-location">📍 Civic Centre, Sector 14</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/MCG+Municipal+Corporation+Civic+Centre+Sector+14+Gurugram" target="_blank" rel="noopener">Civic Centre, Sector 14</a></div>
         <div class="card-desc">Municipal Corporation of Gurugram handles birth/death certificates, property tax, building permits, water connections, and solid waste management.</div>
         <div class="card-tags"><span class="tag">Property Tax</span><span class="tag">Birth Certificate</span><span class="tag">Permits</span></div>
         <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Sat)</span><a class="card-btn" href="#">Visit Portal</a></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">GMDA — Development Authority</div><span class="card-badge badge-green">Planning</span></div>
-        <div class="card-location">📍 Sector 44</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/GMDA+Gurugram+Metropolitan+Development+Authority+Sector+44" target="_blank" rel="noopener">Sector 44</a></div>
         <div class="card-desc">Gurugram Metropolitan Development Authority oversees urban planning, infrastructure development, and zoning across the city.</div>
         <div class="card-tags"><span class="tag">Urban Planning</span><span class="tag">Infrastructure</span><span class="tag">NOC</span></div>
         <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Fri)</span><a class="card-btn" href="#">Visit Portal</a></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">DC Office Gurugram</div><span class="card-badge badge-orange">District Admin</span></div>
-        <div class="card-location">📍 Mini Secretariat, Sector 12</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/District+Collector+Office+Mini+Secretariat+Sector+12+Gurugram" target="_blank" rel="noopener">Mini Secretariat, Sector 12</a></div>
         <div class="card-desc">District Collector office for domicile certificates, caste certificates, income certificates, land records, and administrative grievances.</div>
         <div class="card-tags"><span class="tag">Domicile</span><span class="tag">Land Records</span><span class="tag">Caste Certificate</span></div>
         <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Fri)</span><a class="card-btn" href="#">Visit Portal</a></div>
       </div>
       <div class="card">
         <div class="card-header"><div class="card-name">RTO Gurugram</div><span class="card-badge badge-purple">Transport</span></div>
-        <div class="card-location">📍 Sector 30</div>
+        <div class="card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/RTO+Regional+Transport+Office+Sector+30+Gurugram" target="_blank" rel="noopener">Sector 30</a></div>
         <div class="card-desc">Regional Transport Office for vehicle registration, driving licence, RC renewal, fitness certificates, and permit-related services.</div>
         <div class="card-tags"><span class="tag">Driving Licence</span><span class="tag">RC Renewal</span><span class="tag">Fitness Cert</span></div>
         <div class="card-footer"><span class="card-time">9 AM – 5 PM (Mon–Sat)</span><a class="card-btn" href="#">Visit Portal</a></div>
@@ -1754,7 +1762,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Damdama Lake" />
         <div class="img-card-body">
           <div class="img-card-name">Damdama Lake</div>
-          <div class="img-card-location">📍 Sohna • 25 km from Gurugram</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Damdama+Lake+Sohna+Haryana" target="_blank" rel="noopener">Sohna • 25 km from Gurugram</a></div>
           <div class="img-card-desc">Haryana's largest natural lake offering boating, rock climbing, hot air ballooning, and camping. Perfect for a quick nature escape.</div>
           <div class="card-tags"><span class="tag">Boating</span><span class="tag">Camping</span><span class="tag">Rock Climbing</span></div>
         </div>
@@ -1763,7 +1771,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=80" alt="Neemrana Fort" />
         <div class="img-card-body">
           <div class="img-card-name">Neemrana Fort Palace</div>
-          <div class="img-card-location">📍 Rajasthan • 90 km from Gurugram</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Neemrana+Fort+Palace+Rajasthan" target="_blank" rel="noopener">Rajasthan • 90 km from Gurugram</a></div>
           <div class="img-card-desc">Magnificent 15th-century heritage hotel with zip-lining, infinity pools, and royal Rajasthani cuisine. A stunning overnight or day trip destination.</div>
           <div class="card-tags"><span class="tag">Heritage</span><span class="tag">Zip-line</span><span class="tag">Pool</span></div>
         </div>
@@ -1772,7 +1780,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80" alt="Sariska Tiger Reserve" />
         <div class="img-card-body">
           <div class="img-card-name">Sariska Tiger Reserve</div>
-          <div class="img-card-location">📍 Alwar, Rajasthan • 110 km</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Sariska+Tiger+Reserve+Alwar+Rajasthan" target="_blank" rel="noopener">Alwar, Rajasthan • 110 km</a></div>
           <div class="img-card-desc">Wildlife reserve with Bengal tigers, leopards, and over 200 bird species. Morning and evening safaris available. Best visited Oct–June.</div>
           <div class="card-tags"><span class="tag">Tiger Safari</span><span class="tag">Wildlife</span><span class="tag">Photography</span></div>
         </div>
@@ -1781,7 +1789,7 @@
         <img class="img-card-img" src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400&q=80" alt="Agra Taj Mahal" />
         <div class="img-card-body">
           <div class="img-card-name">Agra — Taj Mahal</div>
-          <div class="img-card-location">📍 Agra, UP • 200 km (2.5 hrs Yamuna Expressway)</div>
+          <div class="img-card-location">📍 <a class="location-link" href="https://www.google.com/maps/search/Taj+Mahal+Agra+UP" target="_blank" rel="noopener">Agra, UP • 200 km (2.5 hrs Yamuna Expressway)</a></div>
           <div class="img-card-desc">The world's most iconic monument — a perfect day trip via the Yamuna Expressway. Combine with Agra Fort and Fatehpur Sikri.</div>
           <div class="card-tags"><span class="tag">UNESCO Heritage</span><span class="tag">Day Trip</span><span class="tag">Expressway</span></div>
         </div>
@@ -1803,7 +1811,7 @@
     <a class="footer-link" href="#metro">Metro</a>
     <a class="footer-link" href="#govt">Govt.</a>
   </div>
-  <div class="footer-copy">© 2025 Gurugram Live. Haryana, India. All rights reserved.</div>
+  <div class="footer-copy">© 2025 Gurugram Live. Haryana, India. All rights reserved. | Developed by Jitendra</div>
 </footer>
 
 <script>
@@ -1902,6 +1910,32 @@
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     });
+  });
+
+  // ── CLICKABLE CARDS WITH LOCATION LINKS ──
+  document.querySelectorAll('.card, .img-card, .institution-card, .event-detail-card').forEach(card => {
+    const locationLink = card.querySelector('.location-link');
+    if (locationLink) {
+      card.addEventListener('click', (e) => {
+        // Don't trigger if clicking on a button or link directly
+        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
+          locationLink.click();
+        }
+      });
+    }
+  });
+
+  // ── CLICKABLE FEATURED EVENT IMAGE ──
+  document.querySelectorAll('.event-featured').forEach(featured => {
+    const imgCard = featured.querySelector('.event-img-card');
+    const detailCard = featured.querySelector('.event-detail-card');
+    const locationLink = detailCard?.querySelector('.location-link');
+    
+    if (imgCard && locationLink) {
+      imgCard.addEventListener('click', (e) => {
+        locationLink.click();
+      });
+    }
   });
 
   // ── INIT ──
