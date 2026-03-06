@@ -126,7 +126,7 @@
     }
     .hero-search-wrap { position: relative; max-width: 600px; margin: 0 auto 40px; }
     .hero-search {
-      width: 100%; padding: 16px 24px 16px 50px;
+      width: 100%; padding: 16px 50px 16px 50px;
       border-radius: 50px;
       border: 1.5px solid var(--border);
       font-size: 15px; font-family: 'DM Sans', sans-serif;
@@ -144,6 +144,12 @@
       position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
       color: var(--accent); font-size: 16px;
     }
+    .hero-search-clear {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      color: var(--text3); font-size: 16px; cursor: pointer; display: none;
+      transition: color 0.2s;
+    }
+    .hero-search-clear:hover { color: var(--accent); }
     .hero-chips {
       display: flex; flex-wrap: wrap; gap: 10px;
       justify-content: center; position: relative; max-width: 860px; margin: 0 auto;
@@ -594,6 +600,7 @@
   <div class="hero-search-wrap">
     <span class="hero-search-icon">🔍</span>
     <input class="hero-search" type="text" placeholder="Search Gurugram — restaurants, hospitals, metro, events..." />
+    <span class="hero-search-clear">✕</span>
   </div>
   <div class="hero-chips">
     <a class="hero-chip" href="#weather">🌤️ Weather</a>
@@ -1939,9 +1946,151 @@
     }
   });
 
-  // ── INIT ──
-  loadWeather();
-  loadAQI();
+  // ── SEARCH FUNCTIONALITY ──
+  let searchTimeout;
+  const searchInput = document.querySelector('.hero-search');
+  const searchClear = document.querySelector('.hero-search-clear');
+  const allSections = document.querySelectorAll('section, [id]');
+  const heroSection = document.querySelector('.hero');
+  const footer = document.querySelector('footer');
+
+  function performSearch(query) {
+    const searchTerm = query.toLowerCase().trim();
+    
+    // Show/hide clear button
+    searchClear.style.display = searchTerm ? 'block' : 'none';
+    
+    if (searchTerm === '') {
+      // Show all sections when search is empty
+      allSections.forEach(section => {
+        if (section !== heroSection && section !== footer) {
+          section.style.display = 'block';
+        }
+      });
+      // Remove any highlighting
+      document.querySelectorAll('.search-highlight').forEach(el => {
+        el.outerHTML = el.innerHTML;
+      });
+      return;
+    }
+
+    let hasResults = false;
+    
+    allSections.forEach(section => {
+      if (section === heroSection || section === footer) return;
+      
+      const sectionContent = section.textContent.toLowerCase();
+      const sectionElement = section;
+      
+      if (sectionContent.includes(searchTerm)) {
+        sectionElement.style.display = 'block';
+        hasResults = true;
+        
+        // Highlight search terms in this section
+        highlightSearchTerms(sectionElement, searchTerm);
+      } else {
+        sectionElement.style.display = 'none';
+      }
+    });
+
+    // If no results, show a message
+    if (!hasResults) {
+      // Create a no results message
+      if (!document.querySelector('.no-results')) {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.innerHTML = `
+          <div style="text-align: center; padding: 60px 20px; color: var(--text2);">
+            <div style="font-size: 48px; margin-bottom: 20px;">🔍</div>
+            <div style="font-size: 18px; font-weight: 600; margin-bottom: 10px;">No results found for "${query}"</div>
+            <div style="font-size: 14px; opacity: 0.7;">Try searching for restaurants, hospitals, malls, metro stations, or events</div>
+          </div>
+        `;
+        document.body.appendChild(noResults);
+      }
+    } else {
+      // Remove no results message if it exists
+      const noResults = document.querySelector('.no-results');
+      if (noResults) noResults.remove();
+    }
+  }
+
+  function highlightSearchTerms(element, searchTerm) {
+    // Remove existing highlights first
+    element.querySelectorAll('.search-highlight').forEach(el => {
+      el.outerHTML = el.innerHTML;
+    });
+
+    // Find and highlight text nodes
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+    const nodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.textContent.toLowerCase().includes(searchTerm)) {
+        nodes.push(node);
+      }
+    }
+
+    nodes.forEach(textNode => {
+      const text = textNode.textContent;
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      const highlighted = text.replace(regex, '<mark class="search-highlight">$1</mark>');
+      const span = document.createElement('span');
+      span.innerHTML = highlighted;
+      textNode.parentNode.replaceChild(span, textNode);
+    });
+  }
+
+  // Search input event listener with debounce
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      performSearch(e.target.value);
+    }, 300);
+  });
+
+  // Clear search on Escape key
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      performSearch('');
+      searchInput.blur();
+    }
+  });
+
+  // Clear search button
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    performSearch('');
+    searchInput.focus();
+  });
+
+  // Add search highlight styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .search-highlight {
+      background-color: rgba(212, 168, 83, 0.3);
+      color: var(--accent);
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+    .no-results {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px);
+      padding: 20px;
+      max-width: 400px;
+      text-align: center;
+    }
+  `;
+  document.head.appendChild(style);
 </script>
 </body>
 </html>
