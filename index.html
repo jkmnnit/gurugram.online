@@ -303,6 +303,7 @@
       box-shadow: var(--card-shadow); transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .news-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: rgba(212,168,83,0.25); }
+    a.news-card { display: block; text-decoration: none; color: inherit; }
     .news-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
     .news-external { font-size: 12px; color: var(--accent); }
     .news-desc { font-size: 13px; color: var(--text2); margin-bottom: 14px; line-height: 1.5; }
@@ -689,36 +690,96 @@
       <div class="section-underline"></div>
     </div>
     <div class="cards-grid reveal">
-      <div class="news-card">
+      <a class="news-card" href="https://www.hindustantimes.com/cities/gurugram-news" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
         <div class="news-card-name">Hindustan Times – Gurugram <span class="news-external">↗</span></div>
         <div class="news-desc">In-depth reporting on Gurugram's infrastructure, corporate news, real estate, and city development from one of India's leading English dailies.</div>
         <div class="news-footer"><span class="news-tag">English Daily</span><span class="news-lang">English</span></div>
-      </div>
-      <div class="news-card">
+      </a>
+      <a class="news-card" href="https://timesofindia.indiatimes.com/city/gurgaon" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
         <div class="news-card-name">Times of India – Gurugram <span class="news-external">↗</span></div>
         <div class="news-desc">Latest breaking news, civic issues, crime, sports, and city development updates from Gurugram's most-read English daily.</div>
         <div class="news-footer"><span class="news-tag">English Daily</span><span class="news-lang">English</span></div>
-      </div>
-      <div class="news-card">
+      </a>
+      <a class="news-card" href="https://www.timesnownews.com/city/gurugram" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Times Now – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">24/7 English news coverage of Gurugram with breaking stories, traffic updates, crime reports, and civic development news.</div>
+        <div class="news-footer"><span class="news-tag">English News</span><span class="news-lang">English</span></div>
+      </a>
+      <a class="news-card" href="https://www.ndtv.com/cities/gurgaon" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">NDTV – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">Trusted national news covering Gurugram's urban stories, infrastructure projects, corporate developments, and breaking news.</div>
+        <div class="news-footer"><span class="news-tag">English News</span><span class="news-lang">English</span></div>
+      </a>
+      <a class="news-card" href="https://navbharattimes.indiatimes.com/city/gurgaon" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
         <div class="news-card-name">Navbharat Times – Gurgaon <span class="news-external">↗</span></div>
         <div class="news-desc">Hindi-language daily covering hyperlocal stories, civic grievances, and community news across Gurugram and Faridabad.</div>
         <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
-      </div>
-      <div class="news-card">
-        <div class="news-card-name">Gurugram Metro – Local News <span class="news-external">↗</span></div>
-        <div class="news-desc">Dedicated hyperlocal news portal covering sector-wise updates, traffic, construction, RWA issues, and resident welfare 24/7.</div>
-        <div class="news-footer"><span class="news-tag" style="background:rgba(16,185,129,0.15);color:#34d399;">Hyperlocal</span><span class="news-lang">Hindi/English</span></div>
-      </div>
-      <div class="news-card">
+      </a>
+      <a class="news-card" href="https://www.news18.com/haryana/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">News18 – Haryana <span class="news-external">↗</span></div>
+        <div class="news-desc">Comprehensive Haryana and Gurugram news with video reports, feature stories, and real-time updates on city affairs and politics.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi/English</span><span class="news-lang">Hindi/English</span></div>
+      </a>
+      <a class="news-card" href="https://www.aajtak.in/haryana" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Aaj Tak – Haryana <span class="news-external">↗</span></div>
+        <div class="news-desc">India's leading Hindi news channel covering Gurugram and Haryana with live updates, video news, and in-depth analysis.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(239,68,68,0.15);color:#f87171;">Hindi News</span><span class="news-lang">Hindi</span></div>
+      </a>
+      <a class="news-card" href="https://zeenews.india.com/hindi/state/haryana" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Zee News – Haryana <span class="news-external">↗</span></div>
+        <div class="news-desc">Leading Hindi news portal with dedicated Haryana and Gurugram coverage — politics, crime, civic issues, and local events.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi News</span><span class="news-lang">Hindi</span></div>
+      </a>
+      <a class="news-card" href="https://www.jagran.com/haryana/gurgaon-city.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Dainik Jagran – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">India's most-read Hindi newspaper with dedicated Gurugram city page covering local news, crime, education, and development.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
+      </a>
+      <a class="news-card" href="https://www.bhaskar.com/local/haryana/gurgaon/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Dainik Bhaskar – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">Hyperlocal Hindi news from Dainik Bhaskar covering Gurugram's sector-wise updates, real estate, traffic, and community stories.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
+      </a>
+      <a class="news-card" href="https://www.indiatoday.in/india/haryana" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
         <div class="news-card-name">India Today – Haryana <span class="news-external">↗</span></div>
         <div class="news-desc">National news magazine's dedicated Haryana coverage with feature stories, interviews, and investigative reports on urban development.</div>
         <div class="news-footer"><span class="news-tag" style="background:rgba(139,92,246,0.15);color:#a78bfa;">News Magazine</span><span class="news-lang">English</span></div>
-      </div>
-      <div class="news-card">
+      </a>
+      <a class="news-card" href="https://theprint.in/category/haryana/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
         <div class="news-card-name">The Print – Haryana/NCR <span class="news-external">↗</span></div>
         <div class="news-desc">Independent journalism covering policy, governance, and accountability in Haryana with significant Gurugram and NCR coverage.</div>
         <div class="news-footer"><span class="news-tag" style="background:rgba(239,68,68,0.15);color:#f87171;">Independent</span><span class="news-lang">English</span></div>
-      </div>
+      </a>
+      <a class="news-card" href="https://www.amarujala.com/haryana/gurgaon" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Amar Ujala – Gurugram <span class="news-external">↗</span></div>
+        <div class="news-desc">Popular Hindi daily with dedicated Gurugram coverage — local crime, civic news, education updates, and community events.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi Daily</span><span class="news-lang">Hindi</span></div>
+      </a>
+      <a class="news-card" href="https://www.livemint.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Mint – Business & Economy <span class="news-external">↗</span></div>
+        <div class="news-desc">Business news covering Gurugram's corporate ecosystem, startup scene, real estate market, and economic developments in the Millennium City.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(16,185,129,0.15);color:#34d399;">Business</span><span class="news-lang">English</span></div>
+      </a>
+      <a class="news-card" href="https://www.moneycontrol.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Moneycontrol – Markets & Biz <span class="news-external">↗</span></div>
+        <div class="news-desc">Financial and business news relevant to Gurugram's thriving corporate sector — stock market, startups, and economic trends.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(16,185,129,0.15);color:#34d399;">Finance</span><span class="news-lang">English</span></div>
+      </a>
+      <a class="news-card" href="https://indianexpress.com/section/cities/delhi/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Indian Express – Delhi-NCR <span class="news-external">↗</span></div>
+        <div class="news-desc">Award-winning journalism covering Delhi-NCR including Gurugram — politics, infrastructure, and investigative reporting.</div>
+        <div class="news-footer"><span class="news-tag">English Daily</span><span class="news-lang">English</span></div>
+      </a>
+      <a class="news-card" href="https://www.abplive.com/states/haryana" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">ABP Live – Haryana <span class="news-external">↗</span></div>
+        <div class="news-desc">Hindi news network with dedicated Haryana state coverage including Gurugram city news, politics, and civic updates.</div>
+        <div class="news-footer"><span class="news-tag" style="background:rgba(245,158,11,0.15);color:#f59e0b;">Hindi News</span><span class="news-lang">Hindi</span></div>
+      </a>
+      <a class="news-card" href="https://www.republicworld.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
+        <div class="news-card-name">Republic World – NCR <span class="news-external">↗</span></div>
+        <div class="news-desc">National English news channel with coverage of Gurugram and NCR urban development, civic issues, and breaking stories.</div>
+        <div class="news-footer"><span class="news-tag">English News</span><span class="news-lang">English</span></div>
+      </a>
     </div>
   </div>
 </div>
