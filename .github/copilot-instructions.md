@@ -2,10 +2,11 @@
 
 ## Architecture
 
-This is a **single-file static site** — all HTML, CSS, and JavaScript live in `index.html` (2,266 lines). There is no build step, no bundler, no npm dependencies, and no frameworks. Pure vanilla JS (ES6+), HTML5, CSS3.
+Static site with no build step, no bundler, no npm dependencies, and no frameworks. Pure vanilla JS (ES6+), HTML5, CSS3.
 
-- **`<style>` block** inside `<head>` — all CSS
-- **`<script>` block** at end of `<body>` — all JavaScript
+- **`index.html`** — page structure and content (HTML only)
+- **`styles.css`** — all styles, linked via `<link>` in `<head>`
+- **`script.js`** — all JavaScript, loaded via `<script src>` before `</body>`
 - **`server.js`** — minimal Node.js HTTP server for local development only
 - **`firebase.json`** — deploys the repo root (`.`) as-is to Firebase Hosting
 
@@ -31,8 +32,10 @@ Pushing to `main` automatically deploys to production Firebase Hosting (`gurugra
 
 ## Key Conventions
 
-### All code goes in `index.html`
-Do not create separate `.js` or `.css` files. CSS belongs in the `<style>` block, JavaScript in the `<script>` block at end of `<body>`.
+### File organization
+- **HTML content** goes in `index.html`
+- **Styles** go in `styles.css`
+- **JavaScript** goes in `script.js`
 
 ### CSS custom properties — use them for everything
 All colors, shadows, spacing, and radii are defined as CSS variables on `:root`. Always use variables instead of hardcoded values:
