@@ -2130,6 +2130,8 @@
   // ── NEAR ME DYNAMIC GEOLOCATION ──
   let userLat = null, userLng = null;
   let locationRequested = false;
+  // Replace hardcoded 'near Gurugram' hrefs with 'near me' on load
+  updateNearMeCards();
   const locateBtn = document.getElementById('nearme-locate-btn');
   const locationText = document.getElementById('nearme-location-text');
   const locationBar = document.getElementById('nearme-location-bar');
