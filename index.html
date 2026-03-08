@@ -2129,6 +2129,7 @@
 
   // ── NEAR ME DYNAMIC GEOLOCATION ──
   let userLat = null, userLng = null;
+  let locationRequested = false;
   const locateBtn = document.getElementById('nearme-locate-btn');
   const locationText = document.getElementById('nearme-location-text');
   const locationBar = document.getElementById('nearme-location-bar');
@@ -2136,9 +2137,11 @@
 
   function getNearMeUrl(query) {
     if (userLat && userLng) {
-      return `https://www.google.com/maps/search/${encodeURIComponent(query)}/@${userLat},${userLng},15z`;
+      // Use exact coords — works regardless of city (Noida, Gurgaon, Delhi, etc.)
+      return `https://www.google.com/maps/search/${encodeURIComponent(query)}/@${userLat},${userLng},16z`;
     }
-    return `https://www.google.com/maps/search/${encodeURIComponent(query + ' near Gurugram')}`;
+    // Fallback: let Google Maps use its own location detection
+    return `https://www.google.com/maps/search/${encodeURIComponent(query + ' near me')}`;
   }
 
   function updateNearMeCards() {
@@ -2149,59 +2152,80 @@
 
   async function reverseGeocode(lat, lng) {
     try {
-      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&zoom=14`, {
-        headers: { 'Accept-Language': 'en' }
-      });
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&zoom=14`,
+        { headers: { 'Accept-Language': 'en' } }
+      );
       const data = await res.json();
       const addr = data.address;
-      return addr.suburb || addr.neighbourhood || addr.city_district || addr.county || addr.city || 'your area';
+      return addr.suburb || addr.neighbourhood || addr.city_district || addr.city || addr.county || null;
     } catch { return null; }
   }
 
-  if (locateBtn && locationText) {
+  function activateLocation(lat, lng) {
+    userLat = parseFloat(lat).toFixed(6);
+    userLng = parseFloat(lng).toFixed(6);
+    updateNearMeCards();
+    locationBar.classList.add('location-active');
+    locationIcon.textContent = '🟢';
+    locateBtn.textContent = '✅ Location Active';
+    locateBtn.classList.add('active');
+    locateBtn.disabled = false;
+  }
+
+  function requestLocation() {
+    if (locationRequested) return;
+    locationRequested = true;
+
+    if (!navigator.geolocation) {
+      locationText.textContent = '❌ Geolocation not supported by your browser';
+      return;
+    }
+    locationText.textContent = '📡 Detecting your exact location…';
+    locateBtn.disabled = true;
+    locateBtn.textContent = '⏳ Locating…';
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        activateLocation(pos.coords.latitude, pos.coords.longitude);
+        // Show area name via reverse geocoding
+        const areaName = await reverseGeocode(userLat, userLng);
+        if (areaName) {
+          locationText.innerHTML = `Showing results near <strong style="color:var(--accent2)">${areaName}</strong> — cards open Google Maps at your exact location`;
+        } else {
+          locationText.innerHTML = `📍 Showing results near your exact location — click any card to open Google Maps`;
+        }
+      },
+      () => {
+        locationRequested = false; // allow retry
+        locationText.textContent = '⚠️ Location denied — click "Use My Location" to find services near you (works anywhere — Noida, Delhi, Gurgaon…)';
+        locateBtn.textContent = '🎯 Use My Location';
+        locateBtn.disabled = false;
+      },
+      { timeout: 10000, maximumAge: 300000, enableHighAccuracy: false }
+    );
+  }
+
+  // Button click
+  if (locateBtn) {
     locateBtn.addEventListener('click', () => {
-      if (!navigator.geolocation) {
-        locationText.textContent = '❌ Geolocation not supported by your browser';
-        return;
-      }
-      locationText.textContent = '📡 Detecting your location…';
-      locateBtn.disabled = true;
-      locateBtn.textContent = '⏳ Locating…';
-
-      navigator.geolocation.getCurrentPosition(
-        async (pos) => {
-          userLat = pos.coords.latitude.toFixed(6);
-          userLng = pos.coords.longitude.toFixed(6);
-          updateNearMeCards();
-
-          // Visual active state
-          locationBar.classList.add('location-active');
-          locationIcon.textContent = '🟢';
-          locateBtn.textContent = '✅ Location Active';
-          locateBtn.classList.add('active');
-          locateBtn.disabled = false;
-
-          // Try reverse geocoding for area name
-          const areaName = await reverseGeocode(userLat, userLng);
-          if (areaName) {
-            locationText.innerHTML = `Showing nearest results in <strong style="color:var(--accent2)">${areaName}</strong> — click any card to open Google Maps`;
-          } else {
-            locationText.innerHTML = `📍 Location found (${userLat}, ${userLng}) — cards now open <strong>nearest results</strong> to you`;
-          }
-
-          // Allow refresh
-          locateBtn.addEventListener('click', () => {
-            locateBtn.textContent = '⏳ Refreshing…';
-          }, { once: true });
-        },
-        () => {
-          locationText.textContent = '⚠️ Location access denied — showing Gurugram-wide results. Click cards to open Google Maps.';
-          locateBtn.textContent = '🎯 Try Again';
-          locateBtn.disabled = false;
-        },
-        { timeout: 10000, maximumAge: 120000 }
-      );
+      locationRequested = false; // reset so it can re-request
+      requestLocation();
     });
+  }
+
+  // Auto-request when Near Me section scrolls into view (once)
+  const nearmeSection = document.getElementById('nearme');
+  if (nearmeSection && 'IntersectionObserver' in window) {
+    const nearmeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !locationRequested) {
+          requestLocation();
+          nearmeObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+    nearmeObserver.observe(nearmeSection);
   }
 
 
