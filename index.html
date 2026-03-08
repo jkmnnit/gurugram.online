@@ -501,11 +501,46 @@
       border-radius: var(--radius-sm); padding: 18px;
       text-align: center; box-shadow: var(--card-shadow);
       transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); cursor: pointer;
+      text-decoration: none; display: block; color: inherit;
     }
     .nearme-card:hover { box-shadow: var(--card-hover); transform: translateY(-4px); border-color: var(--accent); }
     .nearme-icon { font-size: 28px; margin-bottom: 8px; }
     .nearme-label { font-size: 13px; font-weight: 600; color: var(--text); }
     .nearme-sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+    .nearme-location-bar {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      background: rgba(212,168,83,0.07); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px 18px; margin-bottom: 20px;
+      transition: all 0.4s ease;
+    }
+    .nearme-location-bar.location-active {
+      background: rgba(0,201,177,0.07); border-color: rgba(0,201,177,0.35);
+      box-shadow: 0 0 20px rgba(0,201,177,0.1);
+    }
+    .nearme-pulse {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent2); flex-shrink: 0; display: none;
+      box-shadow: 0 0 6px var(--accent2);
+    }
+    .location-active .nearme-pulse { display: block; animation: pulse-dot 1.5s ease-in-out infinite; }
+    @keyframes pulse-dot {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.6); opacity: 0.5; }
+    }
+    .nearme-location-icon { font-size: 18px; flex-shrink: 0; }
+    .nearme-location-text { flex: 1; font-size: 13px; color: var(--text2); min-width: 180px; }
+    .nearme-locate-btn {
+      background: linear-gradient(135deg, var(--accent), #b8862d);
+      color: #0A0F1E; border: none; border-radius: 20px;
+      padding: 7px 16px; font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+      white-space: nowrap;
+    }
+    .nearme-locate-btn.active { background: linear-gradient(135deg, var(--accent2), #009e8c); }
+    .nearme-locate-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px var(--gold-glow); }
+    .nearme-locate-btn.active:hover { box-shadow: 0 4px 15px var(--cyan-glow); }
+    .nearme-locate-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+    .nearme-card.nm-hidden { display: none !important; }
 
     /* SECTION DIVIDER */
     .section-wrap-alt { background: var(--bg2); }
@@ -1539,19 +1574,25 @@
       <div class="section-subtitle">Find essential services closest to your current location in Gurugram</div>
       <div class="section-underline"></div>
     </div>
+    <div class="nearme-location-bar reveal" id="nearme-location-bar">
+      <span class="nearme-pulse" id="nearme-pulse"></span>
+      <span class="nearme-location-icon" id="nearme-location-icon">📍</span>
+      <span class="nearme-location-text" id="nearme-location-text">Enable location to find services nearest to you, or click any category to search in Gurugram</span>
+      <button class="nearme-locate-btn" id="nearme-locate-btn">🎯 Use My Location</button>
+    </div>
     <div class="nearme-grid reveal">
-      <div class="nearme-card"><div class="nearme-icon">🏥</div><div class="nearme-label">Hospitals</div><div class="nearme-sub">Nearest 24/7</div></div>
-      <div class="nearme-card"><div class="nearme-icon">💊</div><div class="nearme-label">Pharmacy</div><div class="nearme-sub">Open Now</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🏧</div><div class="nearme-label">ATM</div><div class="nearme-sub">All Banks</div></div>
-      <div class="nearme-card"><div class="nearme-icon">⛽</div><div class="nearme-label">Petrol Pump</div><div class="nearme-sub">Nearest</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🚇</div><div class="nearme-label">Metro Station</div><div class="nearme-sub">HUDA/Rapid</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🛒</div><div class="nearme-label">Grocery</div><div class="nearme-sub">Open Now</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🍽️</div><div class="nearme-label">Restaurant</div><div class="nearme-sub">Top Rated</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🅿️</div><div class="nearme-label">Parking</div><div class="nearme-sub">Available</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🔧</div><div class="nearme-label">Car Service</div><div class="nearme-sub">Garages</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🏦</div><div class="nearme-label">Bank</div><div class="nearme-sub">Branches</div></div>
-      <div class="nearme-card"><div class="nearme-icon">📮</div><div class="nearme-label">Post Office</div><div class="nearme-sub">Nearest</div></div>
-      <div class="nearme-card"><div class="nearme-icon">🏫</div><div class="nearme-label">School</div><div class="nearme-sub">Nearby</div></div>
+      <a class="nearme-card" href="https://www.google.com/maps/search/hospitals+near+Gurugram" target="_blank" rel="noopener" data-query="hospitals" data-keywords="hospital medical emergency 24/7 health clinic doctor"><div class="nearme-icon">🏥</div><div class="nearme-label">Hospitals</div><div class="nearme-sub">Nearest 24/7</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/pharmacy+near+Gurugram" target="_blank" rel="noopener" data-query="pharmacy" data-keywords="pharmacy medicine chemist drugstore medical shop"><div class="nearme-icon">💊</div><div class="nearme-label">Pharmacy</div><div class="nearme-sub">Open Now</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/ATM+near+Gurugram" target="_blank" rel="noopener" data-query="ATM" data-keywords="ATM cash machine bank withdrawal money"><div class="nearme-icon">🏧</div><div class="nearme-label">ATM</div><div class="nearme-sub">All Banks</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/petrol+pump+near+Gurugram" target="_blank" rel="noopener" data-query="petrol pump" data-keywords="petrol pump fuel station CNG diesel gas station"><div class="nearme-icon">⛽</div><div class="nearme-label">Petrol Pump</div><div class="nearme-sub">Nearest</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/metro+station+near+Gurugram" target="_blank" rel="noopener" data-query="metro station" data-keywords="metro station HUDA Rapid transit public transport"><div class="nearme-icon">🚇</div><div class="nearme-label">Metro Station</div><div class="nearme-sub">HUDA/Rapid</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/grocery+store+near+Gurugram" target="_blank" rel="noopener" data-query="grocery store" data-keywords="grocery supermarket vegetables fruits kirana store shopping"><div class="nearme-icon">🛒</div><div class="nearme-label">Grocery</div><div class="nearme-sub">Open Now</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/restaurant+near+Gurugram" target="_blank" rel="noopener" data-query="restaurant" data-keywords="restaurant food dining cafe eatery eat dine"><div class="nearme-icon">🍽️</div><div class="nearme-label">Restaurant</div><div class="nearme-sub">Top Rated</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/parking+near+Gurugram" target="_blank" rel="noopener" data-query="parking" data-keywords="parking lot vehicle car bike two wheeler park"><div class="nearme-icon">🅿️</div><div class="nearme-label">Parking</div><div class="nearme-sub">Available</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/car+service+garage+near+Gurugram" target="_blank" rel="noopener" data-query="car service garage" data-keywords="car service garage mechanic workshop auto repair vehicle"><div class="nearme-icon">🔧</div><div class="nearme-label">Car Service</div><div class="nearme-sub">Garages</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/bank+near+Gurugram" target="_blank" rel="noopener" data-query="bank" data-keywords="bank branch HDFC ICICI SBI axis kotak finance"><div class="nearme-icon">🏦</div><div class="nearme-label">Bank</div><div class="nearme-sub">Branches</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/post+office+near+Gurugram" target="_blank" rel="noopener" data-query="post office" data-keywords="post office postal courier mail parcel speed post"><div class="nearme-icon">📮</div><div class="nearme-label">Post Office</div><div class="nearme-sub">Nearest</div></a>
+      <a class="nearme-card" href="https://www.google.com/maps/search/school+near+Gurugram" target="_blank" rel="noopener" data-query="school" data-keywords="school education institute nursery primary secondary"><div class="nearme-icon">🏫</div><div class="nearme-label">School</div><div class="nearme-sub">Nearby</div></a>
     </div>
   </div>
 </div>
@@ -1967,6 +2008,8 @@
           section.style.display = 'block';
         }
       });
+      // Reset nearme cards visibility
+      document.querySelectorAll('.nearme-card').forEach(c => c.classList.remove('nm-hidden'));
       // Remove any highlighting
       document.querySelectorAll('.search-highlight').forEach(el => {
         el.outerHTML = el.innerHTML;
@@ -1978,14 +2021,33 @@
     
     allSections.forEach(section => {
       if (section === heroSection || section === footer) return;
-      
+
       const sectionContent = section.textContent.toLowerCase();
       const sectionElement = section;
-      
-      if (sectionContent.includes(searchTerm)) {
+
+      // Also check data-keywords on nearme cards inside this section
+      const nearmeKeywords = Array.from(section.querySelectorAll('[data-keywords]'))
+        .map(el => el.dataset.keywords).join(' ').toLowerCase();
+
+      if (sectionContent.includes(searchTerm) || nearmeKeywords.includes(searchTerm)) {
         sectionElement.style.display = 'block';
         hasResults = true;
-        
+
+        // For nearme section: filter individual cards
+        if (sectionElement.id === 'nearme') {
+          let anyCardMatch = false;
+          section.querySelectorAll('.nearme-card').forEach(card => {
+            const cardText = (card.textContent + ' ' + (card.dataset.keywords || '')).toLowerCase();
+            if (cardText.includes(searchTerm)) {
+              card.classList.remove('nm-hidden');
+              anyCardMatch = true;
+            } else {
+              card.classList.add('nm-hidden');
+            }
+          });
+          if (!anyCardMatch) sectionElement.style.display = 'none';
+        }
+
         // Highlight search terms in this section
         highlightSearchTerms(sectionElement, searchTerm);
       } else {
@@ -2064,6 +2126,84 @@
     performSearch('');
     searchInput.focus();
   });
+
+  // ── NEAR ME DYNAMIC GEOLOCATION ──
+  let userLat = null, userLng = null;
+  const locateBtn = document.getElementById('nearme-locate-btn');
+  const locationText = document.getElementById('nearme-location-text');
+  const locationBar = document.getElementById('nearme-location-bar');
+  const locationIcon = document.getElementById('nearme-location-icon');
+
+  function getNearMeUrl(query) {
+    if (userLat && userLng) {
+      return `https://www.google.com/maps/search/${encodeURIComponent(query)}/@${userLat},${userLng},15z`;
+    }
+    return `https://www.google.com/maps/search/${encodeURIComponent(query + ' near Gurugram')}`;
+  }
+
+  function updateNearMeCards() {
+    document.querySelectorAll('.nearme-card[data-query]').forEach(card => {
+      card.href = getNearMeUrl(card.dataset.query);
+    });
+  }
+
+  async function reverseGeocode(lat, lng) {
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&zoom=14`, {
+        headers: { 'Accept-Language': 'en' }
+      });
+      const data = await res.json();
+      const addr = data.address;
+      return addr.suburb || addr.neighbourhood || addr.city_district || addr.county || addr.city || 'your area';
+    } catch { return null; }
+  }
+
+  if (locateBtn && locationText) {
+    locateBtn.addEventListener('click', () => {
+      if (!navigator.geolocation) {
+        locationText.textContent = '❌ Geolocation not supported by your browser';
+        return;
+      }
+      locationText.textContent = '📡 Detecting your location…';
+      locateBtn.disabled = true;
+      locateBtn.textContent = '⏳ Locating…';
+
+      navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+          userLat = pos.coords.latitude.toFixed(6);
+          userLng = pos.coords.longitude.toFixed(6);
+          updateNearMeCards();
+
+          // Visual active state
+          locationBar.classList.add('location-active');
+          locationIcon.textContent = '🟢';
+          locateBtn.textContent = '✅ Location Active';
+          locateBtn.classList.add('active');
+          locateBtn.disabled = false;
+
+          // Try reverse geocoding for area name
+          const areaName = await reverseGeocode(userLat, userLng);
+          if (areaName) {
+            locationText.innerHTML = `Showing nearest results in <strong style="color:var(--accent2)">${areaName}</strong> — click any card to open Google Maps`;
+          } else {
+            locationText.innerHTML = `📍 Location found (${userLat}, ${userLng}) — cards now open <strong>nearest results</strong> to you`;
+          }
+
+          // Allow refresh
+          locateBtn.addEventListener('click', () => {
+            locateBtn.textContent = '⏳ Refreshing…';
+          }, { once: true });
+        },
+        () => {
+          locationText.textContent = '⚠️ Location access denied — showing Gurugram-wide results. Click cards to open Google Maps.';
+          locateBtn.textContent = '🎯 Try Again';
+          locateBtn.disabled = false;
+        },
+        { timeout: 10000, maximumAge: 120000 }
+      );
+    });
+  }
+
 
   // Add search highlight styles
   const style = document.createElement('style');

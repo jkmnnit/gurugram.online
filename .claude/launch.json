@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static Server (npx serve)",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 8080
+    },
+    {
+      "name": "Firebase Local Emulator",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["firebase", "serve", "--only", "hosting", "--port", "5000"],
+      "port": 5000
+    }
+  ]
+}
